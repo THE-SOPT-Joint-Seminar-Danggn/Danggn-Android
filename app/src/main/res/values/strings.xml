@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">DanggnAndroid</string>
+    <string name="menu_home">홈</string>
+    <string name="menu_town">동네생활</string>
+    <string name="menu_myplace">내 근처</string>
+    <string name="menu_chat">채팅</string>
+    <string name="menu_mypage">나의 당근</string>
 </resources>
