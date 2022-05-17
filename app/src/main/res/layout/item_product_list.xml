@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="product"
+            type="org.sopt.seminar.presentation.home.ProductData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="20dp">
+
+        <ImageView
+            android:id="@+id/iv_product"
+            android:src="@{product.image}"
+            android:layout_width="90dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            tools:src="@drawable/bookimage"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:text="@{product.title}"
+            android:textColor="@color/carrot_black"
+            android:textSize="17sp"
+            app:layout_constraintStart_toEndOf="@id/iv_product"
+            app:layout_constraintTop_toTopOf="@id/iv_product"
+            tools:text="강아지 샘플 사료 판매합니다." />
+
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@{product.location}"
+            android:textColor="@color/darkgray"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/iv_product"
+            app:layout_constraintStart_toStartOf="@id/tv_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            tools:text="개봉동" />
+        <TextView
+            android:id="@+id/tv_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="·"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/tv_location"
+            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@{product.time}"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/tv_dot"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            tools:text="끌올 9초 전" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@{String.valueOf(product.price) + '원'}"
+            android:textColor="@color/carrot_black"
+            android:textSize="17sp"
+            tools:text="3,000원"
+            app:layout_constraintBottom_toBottomOf="@id/iv_product"
+            app:layout_constraintStart_toStartOf="@id/tv_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
