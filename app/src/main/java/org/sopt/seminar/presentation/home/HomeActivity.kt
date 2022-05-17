@@ -1,7 +1,8 @@
-package org.sopt.seminar
+package org.sopt.seminar.presentation.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import org.sopt.seminar.R
 import org.sopt.seminar.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {

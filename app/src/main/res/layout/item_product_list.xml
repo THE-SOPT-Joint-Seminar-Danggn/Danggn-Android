@@ -6,7 +6,7 @@
     <data>
         <variable
             name="product"
-            type="org.sopt.seminar.ProductData" />
+            type="org.sopt.seminar.presentation.home.ProductData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

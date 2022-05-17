@@ -1,9 +1,11 @@
-package org.sopt.seminar
+package org.sopt.seminar.presentation.home
 
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import org.sopt.seminar.util.BaseFragment
+import org.sopt.seminar.R
 import org.sopt.seminar.databinding.FragmentHomeBinding
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {

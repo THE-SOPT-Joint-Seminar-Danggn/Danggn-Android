@@ -1,4 +1,4 @@
-package org.sopt.seminar
+package org.sopt.seminar.presentation.home
 
 import android.view.LayoutInflater
 import android.view.View
