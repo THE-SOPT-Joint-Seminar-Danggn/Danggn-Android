@@ -7,21 +7,193 @@
     tools:context=".WriteActivity">
 
     <ImageButton
-        android:id="@+id/btn_back2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:src=""
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tv_write"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
         android:fontFamily="@font/roboto_semi_bold"
         android:textSize="21sp"
-        app:layout_constraintStart_toEndOf="@id/btn_back2"
+        android:textColor="@color/carrot_black"
+        app:layout_constraintStart_toEndOf="@id/btn_back"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+        android:layout_marginStart="4dp"
         tools:text="중고거래 글쓰기" />
+
+    <TextView
+        android:id="@+id/tv_complete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_semi_bold"
+        android:textSize="21sp"
+        android:textColor="@color/squaregray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"
+        android:layout_marginEnd="14dp"
+        tools:text="완료"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/btn_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/layout_bottom">
+
+
+
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_camera"
+        android:background="@drawable/shape_rectangle"
+        app:layout_constraintTop_toBottomOf="@id/btn_back"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="14dp"
+        android:layout_marginVertical="23dp"
+        tools:text="0/10"/>
+
+    <EditText
+        android:id="@+id/et_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        tools:text="제목"
+        android:textSize="20sp"
+        android:textColor="@color/squaregray"
+        android:fontFamily="@font/roboto_medium"
+        android:background="@null"
+        app:layout_constraintTop_toBottomOf="@id/btn_camera"
+        app:layout_constraintStart_toStartOf="@id/btn_camera"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="14dp" />
+
+    <EditText
+        android:id="@+id/et_category"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        tools:text="카테고리"
+        android:textSize="20sp"
+        android:textColor="@color/squaregray"
+        android:fontFamily="@font/roboto_medium"
+        android:background="@null"
+        app:layout_constraintTop_toBottomOf="@id/et_title"
+        app:layout_constraintStart_toStartOf="@id/et_title"
+        app:layout_constraintEnd_toEndOf="@id/et_title"
+        android:layout_marginTop="40dp" />
+
+    <LinearLayout
+        android:id="@+id/layout_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/et_category"
+        app:layout_constraintStart_toStartOf="@id/et_title"
+        app:layout_constraintEnd_toEndOf="@id/et_title"
+        android:layout_marginTop="40dp">
+
+        <EditText
+            android:id="@+id/et_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            tools:text="가격"
+            android:textSize="20sp"
+            android:textColor="@color/squaregray"
+            android:fontFamily="@font/roboto_medium"
+            android:background="@null"
+            android:layout_weight="3"/>
+
+        <ImageButton
+            android:id="@+id/btn_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_no_check"
+            android:background="@color/white"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/tv_suggest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="가격 제안받기"
+            android:textSize="16sp"
+            android:textColor="@color/squaregray"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_gravity="center"
+            android:layout_marginStart="18dp" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_write"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:text="게시글을 작성해주세요."
+        android:textSize="20sp"
+        android:textColor="@color/squaregray"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="top"
+        android:background="@null"
+        app:layout_constraintTop_toBottomOf="@id/layout_price"
+        app:layout_constraintBottom_toTopOf="@id/layout_bottom"
+        app:layout_constraintStart_toStartOf="@id/et_title"
+        app:layout_constraintEnd_toEndOf="@id/et_title"
+        android:layout_marginTop="27dp"
+        android:paddingVertical="27dp"/>
+
+    <LinearLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/et_title"
+        app:layout_constraintEnd_toEndOf="@id/et_title"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_word"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="자주 쓰는 문구"
+            android:textSize="17sp"
+            android:textColor="@color/carrot_black"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_range" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="보여줄 동네 설정"
+            android:textSize="17sp"
+            android:textColor="@color/carrot_black"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

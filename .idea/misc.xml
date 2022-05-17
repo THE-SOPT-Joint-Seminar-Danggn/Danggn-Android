@@ -4,8 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_alarm.xml" value="0.1955" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_back.xml" value="0.1955" />
         <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_camera.xml" value="0.1955" />
-        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/layout/activity_write.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_img_close.xml" value="0.1965" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_mypage.xml" value="0.1965" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_no_check.xml" value="0.1955" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_range.xml" value="0.1965" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_share.xml" value="0.1965" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/shape_rectangle.xml" value="0.1945" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/layout/activity_write.xml" value="0.33" />
       </map>
     </option>
   </component>
