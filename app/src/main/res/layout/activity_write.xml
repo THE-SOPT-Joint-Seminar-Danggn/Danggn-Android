@@ -6,4 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".WriteActivity">
 
+    <ImageButton
+        android:id="@+id/btn_back2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:fontFamily="@font/roboto_semi_bold"
+        android:textSize="21sp"
+        app:layout_constraintStart_toEndOf="@id/btn_back2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="중고거래 글쓰기" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
