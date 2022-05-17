@@ -69,17 +69,38 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/linegray"
         app:layout_constraintTop_toBottomOf="@id/layout_title" />
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_home"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bnv_main"
+        app:layout_constraintTop_toBottomOf="@id/view" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_write"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/orange"
+        android:src="@drawable/ic_add"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bnv_main"
+        app:layout_constraintRight_toRightOf="parent"
+        app:tint="@android:color/white" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv_main"
         android:layout_width="match_parent"
-        app:itemIconSize="35dp"
         android:layout_height="60dp"
         android:background="@color/carrot_white"
+        app:itemIconSize="35dp"
         app:itemIconTint="@color/selector_bottom_navi"
         app:itemTextColor="@color/carrot_black"
         app:labelVisibilityMode="labeled"
