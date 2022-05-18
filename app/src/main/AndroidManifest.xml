@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DanggnAndroid">
         <activity
-            android:name=".ReadActivity"
-            android:exported="false" />
+            android:name=".presentation.read.ReadActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
