@@ -22,7 +22,8 @@
         android:text="@string/write_title"
         android:textSize="21sp"
         android:textColor="@color/carrot_black"
-        android:fontFamily="@font/roboto_semi_bold"
+        android:fontFamily="@font/roboto"
+        android:textFontWeight="600"
         app:layout_constraintStart_toEndOf="@id/btn_back"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/btn_back"
@@ -32,14 +33,15 @@
         android:id="@+id/tv_complete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_semi_bold"
+        android:text="@string/write_complete"
         android:textSize="21sp"
         android:textColor="@color/squaregray"
+        android:fontFamily="@font/roboto"
+        android:textFontWeight="600"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/btn_back"
-        android:layout_marginEnd="14dp"
-        android:text="@string/write_complete"/>
+        android:layout_marginEnd="14dp" />
 
     <View
         android:id="@+id/line1"
@@ -60,45 +62,84 @@
         android:layout_marginTop="5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_middle"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_camera"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/shape_rectangle"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="@id/line2"
-                app:layout_constraintBottom_toTopOf="@id/line2"
-                android:layout_marginTop="15dp"
-                android:paddingHorizontal="20dp">
+                android:id="@+id/layout_picture"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="@id/layout_middle"
+                app:layout_constraintStart_toStartOf="@id/layout_middle">
 
-                <ImageView
-                    android:id="@+id/iv_camera"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_camera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_camera"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:padding="5dp"/>
+                    app:layout_constraintTop_toTopOf="@id/layout_picture"
+                    app:layout_constraintStart_toStartOf="@id/layout_picture"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:background="@drawable/shape_rectangle"
+                    android:paddingHorizontal="25dp"
+                    android:paddingVertical="17dp"
+                    android:layout_margin="15dp">
 
-                <TextView
-                    android:id="@+id/tv_pic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/write_pic"
-                    app:layout_constraintTop_toBottomOf="@id/iv_camera"
-                    app:layout_constraintStart_toStartOf="@id/iv_camera" />
+                    <ImageView
+                        android:id="@+id/iv_camera"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_camera"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginStart="5dp"/>
 
-                <TextView
-                    android:id="@+id/tv_camera"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/write_camera"
-                    app:layout_constraintTop_toBottomOf="@id/iv_camera"
-                    app:layout_constraintStart_toEndOf="@id/tv_pic"
-                    app:layout_constraintEnd_toEndOf="@id/iv_camera"/>
+                    <TextView
+                        android:id="@+id/tv_pic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/write_pic"
+                        android:textSize="16sp"
+                        android:textColor="@color/carrot_black"
+                        android:fontFamily="@font/roboto"
+                        android:textFontWeight="500"
+                        app:layout_constraintTop_toBottomOf="@id/iv_camera"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tv_camera"/>
+                    <TextView
+                        android:id="@+id/tv_camera"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/write_camera"
+                        android:textSize="16sp"
+                        android:textColor="@color/carrot_black"
+                        android:fontFamily="@font/roboto"
+                        android:textFontWeight="500"
+                        app:layout_constraintStart_toEndOf="@id/tv_pic"
+                        app:layout_constraintTop_toBottomOf="@id/iv_camera"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintTop_toTopOf="@id/layout_picture"
+                    app:layout_constraintBottom_toBottomOf="@id/layout_camera"
+                    app:layout_constraintStart_toEndOf="@id/layout_camera"
+                    app:layout_constraintEnd_toEndOf="@id/layout_picture"
+                    android:layout_marginHorizontal="14dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:listitem="@layout/item_picture_list" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -107,11 +148,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/linegray"
-                app:layout_constraintTop_toBottomOf="@id/layout_camera"
+                app:layout_constraintTop_toBottomOf="@id/layout_picture"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginHorizontal="14dp"
-                android:layout_marginTop="23dp"/>
+                android:layout_marginHorizontal="14dp" />
 
             <EditText
                 android:id="@+id/et_title"
@@ -121,7 +161,8 @@
                 android:hint="@string/write_edit_title"
                 android:textSize="20sp"
                 android:textColor="@color/squaregray"
-                android:fontFamily="@font/roboto_medium"
+                android:fontFamily="@font/roboto"
+                android:textFontWeight="500"
                 android:background="@null"
                 android:paddingVertical="20dp"
                 android:paddingHorizontal="14dp"
@@ -145,7 +186,8 @@
                 android:hint="@string/write_category"
                 android:textSize="20sp"
                 android:textColor="@color/squaregray"
-                android:fontFamily="@font/roboto_medium"
+                android:fontFamily="@font/roboto"
+                android:textFontWeight="500"
                 android:background="@null"
                 android:paddingVertical="20dp"
                 android:paddingHorizontal="14dp"
@@ -174,7 +216,8 @@
                     android:text="@string/write_won"
                     android:textSize="20sp"
                     android:textColor="@color/squaregray"
-                    android:fontFamily="@font/roboto_medium"
+                    android:fontFamily="@font/roboto"
+                    android:textFontWeight="500"
                     android:layout_marginStart="14dp"/>
 
                 <EditText
@@ -185,7 +228,8 @@
                     android:hint="@string/write_price"
                     android:textSize="20sp"
                     android:textColor="@color/squaregray"
-                    android:fontFamily="@font/roboto_medium"
+                    android:fontFamily="@font/roboto"
+                    android:textFontWeight="500"
                     android:background="@null"
                     android:layout_weight="1"
                     android:paddingVertical="20dp"/>
@@ -205,7 +249,8 @@
                     android:text="@string/write_suggest"
                     android:textSize="16sp"
                     android:textColor="@color/squaregray"
-                    android:fontFamily="@font/roboto_medium"
+                    android:fontFamily="@font/roboto"
+                    android:textFontWeight="500"
                     android:layout_gravity="center"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="14dp"/>
@@ -229,7 +274,8 @@
                 android:hint="@string/write_write"
                 android:textSize="20sp"
                 android:textColor="@color/squaregray"
-                android:fontFamily="@font/roboto_medium"
+                android:fontFamily="@font/roboto"
+                android:textFontWeight="500"
                 android:gravity="top"
                 android:background="@null"
                 android:paddingVertical="20dp"
@@ -273,7 +319,8 @@
             android:text="@string/write_word"
             android:textSize="17sp"
             android:textColor="@color/carrot_black"
-            android:fontFamily="@font/roboto_medium"
+            android:fontFamily="@font/roboto"
+            android:textFontWeight="500"
             app:layout_constraintStart_toEndOf="@id/iv_word"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -293,7 +340,8 @@
             android:text="@string/write_range"
             android:textSize="17sp"
             android:textColor="@color/carrot_black"
-            android:fontFamily="@font/roboto_medium"
+            android:fontFamily="@font/roboto"
+            android:textFontWeight="500"
             app:layout_constraintStart_toEndOf="@id/iv_range"
             app:layout_constraintTop_toTopOf="parent"/>
 
