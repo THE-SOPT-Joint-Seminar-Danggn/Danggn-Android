@@ -13,6 +13,7 @@
         <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_smile.xml" value="0.2205" />
         <entry key="app/src/main/res/drawable/ic_town.xml" value="0.1875" />
+        <entry key="app/src/main/res/drawable/read_state_bottom_sheet.xml" value="0.1365" />
         <entry key="app/src/main/res/drawable/rectangle_blue_3dp.xml" value="0.2205" />
         <entry key="app/src/main/res/drawable/rectangle_circlegray_4dp.xml" value="0.2205" />
         <entry key="app/src/main/res/drawable/rectangle_linegray_1dp.xml" value="0.1" />
@@ -26,6 +27,7 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.24416351318359372" />
         <entry key="app/src/main/res/layout/item_picture_list.xml" value="0.25769927536231885" />
         <entry key="app/src/main/res/layout/item_product_list.xml" value="0.2694787288057632" />
+        <entry key="app/src/main/res/layout/read_bottom_sheet.xml" value="0.1" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.2942708333333333" />
       </map>
     </option>
