@@ -3,6 +3,7 @@ package org.sopt.seminar
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import androidx.core.content.ContextCompat
 import org.sopt.seminar.databinding.ActivityWriteBinding
 import org.sopt.seminar.presentation.home.PictureAdapter
@@ -17,6 +18,7 @@ class WriteActivity : BaseActivity<ActivityWriteBinding>(R.layout.activity_write
 
         initPictureAdapter()
         changePriceColor()
+        changeSuggestButton()
         backClickEvent()
     }
 
@@ -48,13 +50,25 @@ class WriteActivity : BaseActivity<ActivityWriteBinding>(R.layout.activity_write
         })
     }
 
+    private fun changeSuggestButton() {
+        binding.btnCheck.setOnClickListener(object : View.OnClickListener {
+            var isClicked = false
+            override fun onClick(v: View?) {
+                isClicked = !isClicked
+                if (isClicked) binding.btnCheck.setImageResource(R.drawable.ic_check)
+                else binding.btnCheck.setImageResource(R.drawable.ic_no_check)
+            }
+
+        })
+    }
+
     private fun initPictureAdapter() {
         pictureAdapter = PictureAdapter()
         binding.rvPicture.adapter = pictureAdapter
     }
 
     private fun backClickEvent() {
-        binding.btnBack.setOnClickListener() {
+        binding.btnBack.setOnClickListener {
             finish()
         }
     }
