@@ -5,6 +5,16 @@
     <string name="menu_myplace">내 근처</string>
     <string name="menu_chat">채팅</string>
     <string name="menu_mypage">나의 당근</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="write_title">중고거래 글쓰기</string>
+    <string name="write_complete">완료</string>
+    <string name="write_pic">0</string>
+    <string name="write_camera">/10</string>
+    <string name="write_edit_title">제목</string>
+    <string name="write_category">카테고리</string>
+    <string name="write_won">&#65510;</string>
+    <string name="write_price">가격</string>
+    <string name="write_suggest">가격 제안받기</string>
+    <string name="write_write">게시글을 작성해주세요.</string>
+    <string name="write_word">자주 쓰는 문구</string>
+    <string name="write_range">보여줄 동네 설정</string>
 </resources>
