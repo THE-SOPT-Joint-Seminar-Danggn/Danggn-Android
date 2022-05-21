@@ -337,7 +337,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
-                android:src="@drawable/ic_heart"
+
+                android:background="@drawable/selector_read_heart"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -347,7 +348,6 @@
                 android:layout_height="0dp"
                 android:layout_marginVertical="2dp"
                 android:layout_marginStart="2dp"
-
                 android:rotation="90"
                 android:src="@drawable/rectangle_linegray_1dp"
                 app:layout_constraintBottom_toBottomOf="@id/iv_heart"
@@ -388,7 +388,6 @@
                 android:paddingVertical="12dp"
                 android:text="채팅 목록 보기"
                 android:textColor="@color/carrot_white"
-
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

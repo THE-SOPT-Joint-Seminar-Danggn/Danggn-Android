@@ -2,6 +2,7 @@ package org.sopt.seminar.presentation.read
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.viewpager2.widget.ViewPager2
@@ -13,8 +14,8 @@ import org.sopt.seminar.util.BaseActivity
 
 class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
 
-
-    private val arrTextViewId = arrayListOf(R.id.tv_title, R.id.tv_1, R.id.tv_2, R.id.tv_3, R.id.tv_4, R.id.tv_5, R.id.tv_6)
+    private val arrTextViewId =
+        arrayListOf(R.id.tv_title, R.id.tv_1, R.id.tv_2, R.id.tv_3, R.id.tv_4, R.id.tv_5, R.id.tv_6)
 
     private lateinit var imageViewPagerAdapter: ReadImageViewPagerAdapter
 
@@ -29,18 +30,35 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
         imageViewPagerAdapter = ReadImageViewPagerAdapter(imageUrlList)
         setUpViewPager()
 
-        TabLayoutMediator(binding.tlImages, binding.vpImages) {
-            tab, position ->
+        TabLayoutMediator(binding.tlImages, binding.vpImages) { tab, position ->
         }.attach()
 
         val stateBottomSheetView = layoutInflater.inflate(R.layout.read_bottom_sheet, null)
-        val stateBottomSheetDialog = BottomSheetDialog(this, R.style.DialogCustomTheme) // dialog에 sytle 추가
+        val stateBottomSheetDialog =
+            BottomSheetDialog(this, R.style.DialogCustomTheme) // dialog에 sytle 추가
         val stateArray = resources.getStringArray(R.array.read_state_bottom_sheet_array)
 
         stateBottomSheetDialog.setContentView(stateBottomSheetView)
-        setBottomSheetView(stateBottomSheetView, stateArray, stateBottomSheetDialog, binding.tvState)
+        setBottomSheetView(
+            stateBottomSheetView,
+            stateArray,
+            stateBottomSheetDialog,
+            binding.tvState
+        )
         binding.clState.setOnClickListener {
             stateBottomSheetDialog.show()
+        }
+
+        var heart = false
+        binding.ivHeart.setOnClickListener {
+            if (!heart) {
+                heart = true
+                binding.ivHeart.isSelected = true
+            } else {
+                heart = false
+                binding.ivHeart.isSelected = false
+            }
+
         }
     }
 
@@ -54,7 +72,12 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
         binding.vpImages.currentItem = currentPageIndex
     }
 
-    private fun setBottomSheetView(bottomSheetView: View, arr: Array<String>, dialog: BottomSheetDialog, spinner: TextView) {
+    private fun setBottomSheetView(
+        bottomSheetView: View,
+        arr: Array<String>,
+        dialog: BottomSheetDialog,
+        spinner: TextView
+    ) {
         for (i in arr.indices) {
             val textView = bottomSheetView.findViewById<TextView>(arrTextViewId[i])
             textView.text = arr[i]
@@ -65,4 +88,5 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
             }
         }
     }
+
 }
