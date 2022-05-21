@@ -1,13 +1,12 @@
-package org.sopt.seminar
+package org.sopt.seminar.presentation.write
 
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import androidx.core.content.ContextCompat
+import org.sopt.seminar.R
 import org.sopt.seminar.databinding.ActivityWriteBinding
-import org.sopt.seminar.presentation.home.PictureAdapter
-import org.sopt.seminar.presentation.home.PictureData
 import org.sopt.seminar.util.BaseActivity
 
 class WriteActivity : BaseActivity<ActivityWriteBinding>(R.layout.activity_write) {

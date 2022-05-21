@@ -1,4 +1,4 @@
-package org.sopt.seminar.presentation.home
+package org.sopt.seminar.presentation.write
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

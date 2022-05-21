@@ -6,7 +6,7 @@
     <data>
         <variable
             name="picture"
-            type="org.sopt.seminar.presentation.home.PictureData" />
+            type="org.sopt.seminar.presentation.write.PictureData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
