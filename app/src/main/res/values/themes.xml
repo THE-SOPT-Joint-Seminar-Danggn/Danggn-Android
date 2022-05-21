@@ -15,4 +15,18 @@
         <!-- Customize your theme here. -->
         <item name="android:includeFontPadding">false</item>
     </style>
+
+    <!-- bottom sheet 배경 투명 -->
+    <style name="DialogCustomTheme" parent="android:Theme.Holo.Dialog.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+    </style>
+
+    <!--bottom sheet 내용-->
+    <string-array name="read_state_bottom_sheet_array">
+        <item>상태 변경</item>  <!--title-->
+        <item>판매중</item>
+        <item>예약중</item>
+        <item>거래완료</item>
+    </string-array>
 </resources>
