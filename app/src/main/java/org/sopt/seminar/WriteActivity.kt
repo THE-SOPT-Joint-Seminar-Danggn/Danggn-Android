@@ -15,12 +15,13 @@ class WriteActivity : BaseActivity<ActivityWriteBinding>(R.layout.activity_write
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        binding.btnCheck.isEnabled = false
         initPictureAdapter()
         changePriceColor()
         changeSuggestButton()
         backClickEvent()
     }
+
 
     private fun changePriceColor() {
         binding.etPrice.addTextChangedListener(object : TextWatcher {
@@ -35,6 +36,13 @@ class WriteActivity : BaseActivity<ActivityWriteBinding>(R.layout.activity_write
                             R.color.carrot_black
                         )
                     )
+                    binding.tvSuggest.setTextColor(
+                        ContextCompat.getColor(
+                            this@WriteActivity,
+                            R.color.carrot_black
+                        )
+                    )
+                    binding.btnCheck.isEnabled= true
                 } else {
                     binding.tvWon.setTextColor(
                         ContextCompat.getColor(
@@ -42,6 +50,13 @@ class WriteActivity : BaseActivity<ActivityWriteBinding>(R.layout.activity_write
                             R.color.squaregray
                         )
                     )
+                    binding.tvSuggest.setTextColor(
+                        ContextCompat.getColor(
+                            this@WriteActivity,
+                            R.color.squaregray
+                        )
+                    )
+                    binding.btnCheck.isEnabled = false
                 }
             }
 
