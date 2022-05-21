@@ -7,10 +7,11 @@ import com.bumptech.glide.Glide
 import org.sopt.seminar.databinding.ItemPictureListBinding
 
 class PictureAdapter : RecyclerView.Adapter<PictureAdapter.PictureViewHolder>() {
-    public val pictureList = mutableListOf<PictureData>()
+    val pictureList = mutableListOf<PictureData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PictureViewHolder {
-        val binding = ItemPictureListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemPictureListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return PictureViewHolder(binding)
     }
 
@@ -22,10 +23,10 @@ class PictureAdapter : RecyclerView.Adapter<PictureAdapter.PictureViewHolder>() 
 
     class PictureViewHolder(
         private val binding: ItemPictureListBinding
-    ) : RecyclerView.ViewHolder(binding.root){
-        fun onBind(data: PictureData){
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun onBind(data: PictureData) {
             Glide.with(binding.root)
-                .load(data)
+                .load(data.image)
                 .into(binding.ivPicture)
         }
     }

@@ -78,8 +78,18 @@ class WriteActivity : BaseActivity<ActivityWriteBinding>(R.layout.activity_write
     }
 
     private fun initPictureAdapter() {
+       val img = "https://images.velog.io/images/jojo_devstory/post/dae32386-bffc-40c3-b866-5c1e64516902/Android%2010_0.jpg"
         pictureAdapter = PictureAdapter()
         binding.rvPicture.adapter = pictureAdapter
+        pictureAdapter.pictureList.addAll(
+            listOf(
+                PictureData(img),
+                PictureData(img),
+                PictureData(img),
+                PictureData(img)
+            )
+        )
+        pictureAdapter.notifyDataSetChanged()
     }
 
     private fun backClickEvent() {
