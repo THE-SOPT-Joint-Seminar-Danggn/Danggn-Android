@@ -7,7 +7,7 @@
 [issue 템플릿](https://github.com/THE-SOPT-Joint-Seminar-Danggn/Danggn-Android/blob/main/.github/ISSUE_TEMPLATE/custom.md)
 
 ### 📍Pull requests 생성
-// pull requests 템플릿 링크 연결
+[pull request 템플릿](https://github.com/THE-SOPT-Joint-Seminar-Danggn/Danggn-Android/blob/main/.github/PULL_REQUESTS_TEMLETE.md)
 
 ### 📍commit message
 
