@@ -97,10 +97,10 @@
           ┣ viewModels
         ┣ 📂write
           ┣ screens
-          ┣ viewMdoels
+          ┣ viewModels
         ┣ 📂read
           ┣ screens
-          ┗ viewMdoels
+          ┗ viewModels
           
  ## 🥕 Git branch Rule
  
