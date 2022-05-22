@@ -128,8 +128,8 @@
                         android:id="@+id/layout_rv"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:orientation="horizontal"
                         android:layout_marginHorizontal="14dp"
+                        android:orientation="horizontal"
                         app:layout_constraintBottom_toBottomOf="@id/layout_camera"
                         app:layout_constraintEnd_toEndOf="@id/layout_picture"
                         app:layout_constraintStart_toEndOf="@id/layout_camera"
@@ -337,9 +337,9 @@
                 android:textColor="@color/carrot_black"
                 android:textFontWeight="500"
                 android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_word"
                 app:layout_constraintStart_toEndOf="@id/iv_word"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="@id/iv_word"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/iv_range"
@@ -359,9 +359,9 @@
                 android:textColor="@color/carrot_black"
                 android:textFontWeight="500"
                 android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_range"
                 app:layout_constraintStart_toEndOf="@id/iv_range"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="@id/iv_range"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

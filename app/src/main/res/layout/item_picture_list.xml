@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="picture"
             type="org.sopt.seminar.presentation.write.PictureData" />
@@ -32,12 +33,12 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/bookimage"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/bookimage" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -52,7 +53,5 @@
             app:layout_constraintTop_toTopOf="@id/layout_write_camera" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 </layout>

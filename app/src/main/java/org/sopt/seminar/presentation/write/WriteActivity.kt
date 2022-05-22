@@ -1,10 +1,14 @@
 package org.sopt.seminar.presentation.write
 
+import android.icu.text.DecimalFormat
 import android.os.Bundle
 import android.text.Editable
+import android.text.Selection
 import android.text.TextWatcher
 import android.view.View
+import android.widget.EditText
 import androidx.core.content.ContextCompat
+import androidx.core.widget.doOnTextChanged
 import org.sopt.seminar.R
 import org.sopt.seminar.databinding.ActivityWriteBinding
 import org.sopt.seminar.util.BaseActivity
@@ -14,6 +18,7 @@ class WriteActivity : BaseActivity<ActivityWriteBinding>(R.layout.activity_write
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding.btnCheck.isEnabled = false
         initPictureAdapter()
         changePriceColor()
@@ -21,14 +26,13 @@ class WriteActivity : BaseActivity<ActivityWriteBinding>(R.layout.activity_write
         backClickEvent()
     }
 
-
     private fun changePriceColor() {
         binding.etPrice.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s?.length!! > 0) {
+                if (!s.isNullOrEmpty()) {
                     binding.tvWon.setTextColor(
                         ContextCompat.getColor(
                             this@WriteActivity,
@@ -41,7 +45,7 @@ class WriteActivity : BaseActivity<ActivityWriteBinding>(R.layout.activity_write
                             R.color.carrot_black
                         )
                     )
-                    binding.btnCheck.isEnabled= true
+                    binding.btnCheck.isEnabled = true
                 } else {
                     binding.tvWon.setTextColor(
                         ContextCompat.getColor(
@@ -77,7 +81,8 @@ class WriteActivity : BaseActivity<ActivityWriteBinding>(R.layout.activity_write
     }
 
     private fun initPictureAdapter() {
-       val img = "https://images.velog.io/images/jojo_devstory/post/dae32386-bffc-40c3-b866-5c1e64516902/Android%2010_0.jpg"
+        val img =
+            "https://images.velog.io/images/jojo_devstory/post/dae32386-bffc-40c3-b866-5c1e64516902/Android%2010_0.jpg"
         pictureAdapter = PictureAdapter()
         binding.rvPicture.adapter = pictureAdapter
         pictureAdapter.pictureList.addAll(
