@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="writViewModel"
+            name="writeViewModel"
             type="org.sopt.seminar.presentation.write.WriteViewModel" />
     </data>
 
@@ -48,6 +48,7 @@
             android:textColor="@color/squaregray"
             android:textFontWeight="600"
             android:textSize="21sp"
+            android:clickable="true"
             app:layout_constraintBottom_toBottomOf="@id/btn_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -177,6 +178,7 @@
                     android:inputType="text"
                     android:paddingHorizontal="14dp"
                     android:paddingVertical="20dp"
+                    android:text="@={writeViewModel.title}"
                     android:textColor="@color/carrot_black"
                     android:textColorHint="@color/squaregray"
                     android:textFontWeight="500"
@@ -203,6 +205,7 @@
                     android:inputType="text"
                     android:paddingHorizontal="14dp"
                     android:paddingVertical="20dp"
+                    android:text="@={writeViewModel.category}"
                     android:textColor="@color/carrot_black"
                     android:textColorHint="@color/squaregray"
                     android:textFontWeight="500"
@@ -298,6 +301,7 @@
                     android:inputType="text"
                     android:paddingHorizontal="14dp"
                     android:paddingVertical="20dp"
+                    android:text="@={writeViewModel.content}"
                     android:textColor="@color/carrot_black"
                     android:textColorHint="@color/squaregray"
                     android:textFontWeight="500"

@@ -23,7 +23,7 @@ class WriteActivity : AppCompatActivity() {
         binding = ActivityWriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.writViewModel = viewModel
+        binding.writeViewModel = viewModel
         binding.lifecycleOwner = this
 
         checkComplete()
