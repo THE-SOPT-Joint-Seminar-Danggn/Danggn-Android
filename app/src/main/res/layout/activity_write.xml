@@ -250,6 +250,7 @@
                         android:fontFamily="@font/roboto"
                         android:hint="@string/write_price"
                         android:paddingVertical="20dp"
+                        android:inputType="number"
                         android:text="@={writeViewModel.price}"
                         android:textColor="@color/carrot_black"
                         android:textColorHint="@color/squaregray"

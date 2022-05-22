@@ -13,23 +13,19 @@ class WriteViewModel : ViewModel() {
     var price = MutableLiveData<String>()
     var isChecked = MutableLiveData(false)
 
-    fun completeCheck(): Boolean {
-        return if (!title.value.isNullOrEmpty() && !category.value.isNullOrEmpty() && !price.value.isNullOrEmpty() &&!content.value.isNullOrEmpty()) {
+    fun completeCheck() {
+        return if (!title.value.isNullOrEmpty() && !category.value.isNullOrEmpty() && !price.value.isNullOrEmpty() && !content.value.isNullOrEmpty()) {
             isSuccess.value = true
-            true
         } else {
             isSuccess.value = false
-            false
         }
     }
 
-    fun completePriceCheck(): Boolean {
+    fun completePriceCheck() {
         return if (!price.value.isNullOrEmpty()) {
             isChecked.value = true
-            true
         } else {
             isChecked.value = false
-            false
         }
     }
 }

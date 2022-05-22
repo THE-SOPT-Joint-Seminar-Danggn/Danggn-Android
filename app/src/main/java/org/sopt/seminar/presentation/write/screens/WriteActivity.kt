@@ -66,10 +66,10 @@ class WriteActivity : AppCompatActivity() {
         }
         viewModel.isChecked.observe(this) {
             if (it) {
-                var isChecked = false
+                var isCheckBoxFilled = false
                 binding.btnCheck.setOnClickListener {
-                    isChecked = !isChecked
-                    if (isChecked) binding.btnCheck.setImageResource(R.drawable.ic_check)
+                    isCheckBoxFilled = !isCheckBoxFilled
+                    if (isCheckBoxFilled) binding.btnCheck.setImageResource(R.drawable.ic_check)
                     else binding.btnCheck.setImageResource(R.drawable.ic_no_check)
                 }
             } else {
