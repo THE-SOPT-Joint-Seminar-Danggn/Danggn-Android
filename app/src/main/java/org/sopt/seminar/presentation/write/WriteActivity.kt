@@ -1,30 +1,61 @@
 package org.sopt.seminar.presentation.write
 
-import android.icu.text.DecimalFormat
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
-import android.text.Selection
 import android.text.TextWatcher
 import android.view.View
-import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.widget.doOnTextChanged
+import androidx.activity.viewModels
 import org.sopt.seminar.R
 import org.sopt.seminar.databinding.ActivityWriteBinding
-import org.sopt.seminar.util.BaseActivity
+import org.sopt.seminar.presentation.read.ReadActivity
 
-class WriteActivity : BaseActivity<ActivityWriteBinding>(R.layout.activity_write) {
+class WriteActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityWriteBinding
+    private val viewModel by viewModels<WriteViewModel>()
     private lateinit var pictureAdapter: PictureAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityWriteBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        binding.btnCheck.isEnabled = false
+        binding.writViewModel = viewModel
+        binding.lifecycleOwner = this
+
+        checkComplete()
+        goReadActivity()
         initPictureAdapter()
         changePriceColor()
         changeSuggestButton()
         backClickEvent()
     }
+
+
+    private fun checkComplete() {
+        viewModel.title.observe(this) {
+            viewModel.completeCheck()
+        }
+        viewModel.category.observe(this) {
+            viewModel.completeCheck()
+        }
+        viewModel.content.observe(this) {
+            viewModel.completeCheck()
+        }
+        viewModel.isSuccess.observe(this) {
+            if (it) {
+                binding.tvComplete.isClickable = true
+                binding.tvComplete.setTextColor(ContextCompat.getColor(this, R.color.orange))
+            } else {
+                binding.tvComplete.isClickable = false
+                binding.tvComplete.setTextColor(ContextCompat.getColor(this, R.color.squaregray))
+            }
+        }
+    }
+
 
     private fun changePriceColor() {
         binding.etPrice.addTextChangedListener(object : TextWatcher {
@@ -45,7 +76,6 @@ class WriteActivity : BaseActivity<ActivityWriteBinding>(R.layout.activity_write
                             R.color.carrot_black
                         )
                     )
-                    binding.btnCheck.isEnabled = true
                 } else {
                     binding.tvWon.setTextColor(
                         ContextCompat.getColor(
@@ -59,7 +89,6 @@ class WriteActivity : BaseActivity<ActivityWriteBinding>(R.layout.activity_write
                             R.color.squaregray
                         )
                     )
-                    binding.btnCheck.isEnabled = false
                 }
             }
 
@@ -78,6 +107,15 @@ class WriteActivity : BaseActivity<ActivityWriteBinding>(R.layout.activity_write
             }
 
         })
+    }
+
+    private fun goReadActivity() {
+        if (binding.tvComplete.isClickable) {
+            binding.tvComplete.setOnClickListener {
+                val intent = Intent(this, ReadActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     private fun initPictureAdapter() {
@@ -103,3 +141,4 @@ class WriteActivity : BaseActivity<ActivityWriteBinding>(R.layout.activity_write
     }
 
 }
+

@@ -7,13 +7,13 @@
 
         <variable
             name="writViewModel"
-            type="org.sopt.seminar.WriteViewModel" />
+            type="org.sopt.seminar.presentation.write.WriteViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".WriteActivity">
+        tools:context=".presentation.write.WriteActivity">
 
         <ImageButton
             android:id="@+id/btn_back"
@@ -253,13 +253,14 @@
                         android:paddingVertical="20dp"
                         android:layout_marginStart="2dp"/>
 
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/btn_check"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="@color/white"
-                        android:src="@drawable/ic_no_check" />
+                        android:src="@drawable/ic_no_check"
+                        android:clickable="false"/>
 
                     <TextView
                         android:id="@+id/tv_suggest"
