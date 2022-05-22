@@ -7,13 +7,13 @@
 
         <variable
             name="writeViewModel"
-            type="org.sopt.seminar.presentation.write.WriteViewModel" />
+            type="org.sopt.seminar.presentation.write.viewmodels.WriteViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.write.WriteActivity">
+        tools:context=".presentation.write.screens.WriteActivity">
 
         <ImageButton
             android:id="@+id/btn_back"

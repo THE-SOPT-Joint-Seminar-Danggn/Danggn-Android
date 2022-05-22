@@ -1,10 +1,10 @@
-package org.sopt.seminar.presentation.home
+package org.sopt.seminar.presentation.home.screens
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import org.sopt.seminar.R
-import org.sopt.seminar.presentation.write.WriteActivity
+import org.sopt.seminar.presentation.write.screens.WriteActivity
 import org.sopt.seminar.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {

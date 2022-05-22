@@ -1,4 +1,4 @@
-package org.sopt.seminar.presentation.write
+package org.sopt.seminar.presentation.write.viewmodels
 
 
 import androidx.lifecycle.MutableLiveData

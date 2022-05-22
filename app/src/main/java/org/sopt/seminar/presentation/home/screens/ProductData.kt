@@ -1,4 +1,4 @@
-package org.sopt.seminar.presentation.home
+package org.sopt.seminar.presentation.home.screens
 
 data class ProductData(
     val image: Int,

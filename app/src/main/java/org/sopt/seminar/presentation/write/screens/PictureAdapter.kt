@@ -1,4 +1,4 @@
-package org.sopt.seminar.presentation.write
+package org.sopt.seminar.presentation.write.screens
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

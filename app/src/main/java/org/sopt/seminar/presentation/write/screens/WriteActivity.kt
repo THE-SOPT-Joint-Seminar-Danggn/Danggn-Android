@@ -1,16 +1,16 @@
-package org.sopt.seminar.presentation.write
+package org.sopt.seminar.presentation.write.screens
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import org.sopt.seminar.R
 import org.sopt.seminar.databinding.ActivityWriteBinding
-import org.sopt.seminar.presentation.read.ReadActivity
+import org.sopt.seminar.presentation.read.screens.ReadActivity
+import org.sopt.seminar.presentation.write.viewmodels.WriteViewModel
 
 class WriteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWriteBinding
