@@ -4,7 +4,7 @@
 ## 🥕 Github Convention
 
 ### 📍issue 생성
-// issue 템플릿 링크 연결
+[issue 템플릿](https://github.com/THE-SOPT-Joint-Seminar-Danggn/Danggn-Android/blob/main/.github/ISSUE_TEMPLATE/custom.md)
 
 ### 📍Pull requests 생성
 // pull requests 템플릿 링크 연결
