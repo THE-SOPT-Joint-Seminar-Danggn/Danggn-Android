@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import org.sopt.seminar.R
-import org.sopt.seminar.WriteActivity
+import org.sopt.seminar.presentation.write.WriteActivity
 import org.sopt.seminar.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
@@ -26,8 +26,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun fabClickEvent() {
         binding.fabWrite.setOnClickListener {
-            //TODO writeActivity로 intent 이동
-            val intent = Intent(this,WriteActivity::class.java)
+            val intent = Intent(this, WriteActivity::class.java)
             startActivity(intent)
 
         }

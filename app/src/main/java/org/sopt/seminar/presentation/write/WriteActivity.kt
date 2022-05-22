@@ -1,14 +1,14 @@
-package org.sopt.seminar
+package org.sopt.seminar.presentation.write
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import org.sopt.seminar.presentation.home.PictureAdapter
 import androidx.activity.viewModels
+import org.sopt.seminar.R
 import org.sopt.seminar.databinding.ActivityWriteBinding
 import org.sopt.seminar.presentation.read.ReadActivity
 
@@ -23,14 +23,14 @@ class WriteActivity : AppCompatActivity() {
         binding = ActivityWriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //viewModel
-        binding.writViewModel = viewModel
+        binding.writeViewModel = viewModel
         binding.lifecycleOwner = this
 
         checkComplete()
         goReadActivity()
         initPictureAdapter()
         changePriceColor()
+        changeSuggestButton()
         backClickEvent()
     }
 
@@ -63,8 +63,14 @@ class WriteActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s?.length!! > 0) {
+                if (!s.isNullOrEmpty()) {
                     binding.tvWon.setTextColor(
+                        ContextCompat.getColor(
+                            this@WriteActivity,
+                            R.color.carrot_black
+                        )
+                    )
+                    binding.tvSuggest.setTextColor(
                         ContextCompat.getColor(
                             this@WriteActivity,
                             R.color.carrot_black
@@ -72,6 +78,12 @@ class WriteActivity : AppCompatActivity() {
                     )
                 } else {
                     binding.tvWon.setTextColor(
+                        ContextCompat.getColor(
+                            this@WriteActivity,
+                            R.color.squaregray
+                        )
+                    )
+                    binding.tvSuggest.setTextColor(
                         ContextCompat.getColor(
                             this@WriteActivity,
                             R.color.squaregray
@@ -85,6 +97,18 @@ class WriteActivity : AppCompatActivity() {
         })
     }
 
+    private fun changeSuggestButton() {
+        binding.btnCheck.setOnClickListener(object : View.OnClickListener {
+            var isClicked = false
+            override fun onClick(v: View?) {
+                isClicked = !isClicked
+                if (isClicked) binding.btnCheck.setImageResource(R.drawable.ic_check)
+                else binding.btnCheck.setImageResource(R.drawable.ic_no_check)
+            }
+
+        })
+    }
+
     private fun goReadActivity() {
         if (binding.tvComplete.isClickable) {
             binding.tvComplete.setOnClickListener {
@@ -95,12 +119,23 @@ class WriteActivity : AppCompatActivity() {
     }
 
     private fun initPictureAdapter() {
+        val img =
+            "https://images.velog.io/images/jojo_devstory/post/dae32386-bffc-40c3-b866-5c1e64516902/Android%2010_0.jpg"
         pictureAdapter = PictureAdapter()
         binding.rvPicture.adapter = pictureAdapter
+        pictureAdapter.pictureList.addAll(
+            listOf(
+                PictureData(img),
+                PictureData(img),
+                PictureData(img),
+                PictureData(img)
+            )
+        )
+        pictureAdapter.notifyDataSetChanged()
     }
 
     private fun backClickEvent() {
-        binding.btnBack.setOnClickListener() {
+        binding.btnBack.setOnClickListener {
             finish()
         }
     }

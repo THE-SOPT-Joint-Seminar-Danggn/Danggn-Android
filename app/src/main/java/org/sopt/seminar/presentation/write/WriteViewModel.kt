@@ -1,4 +1,4 @@
-package org.sopt.seminar
+package org.sopt.seminar.presentation.write
 
 
 import androidx.lifecycle.MutableLiveData
