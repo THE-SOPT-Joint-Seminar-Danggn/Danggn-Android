@@ -14,8 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DanggnAndroid">
         <activity
-            android:name=".presentation.write.WriteActivity"
-            android:exported="false"/>
+            android:name=".WriteActivity"
+            android:exported="false">
+        </activity>
+
         <activity
             android:name=".presentation.read.ReadActivity"
             android:exported="true" />
