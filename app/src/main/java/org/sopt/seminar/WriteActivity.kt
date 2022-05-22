@@ -1,5 +1,7 @@
 package org.sopt.seminar
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,6 +10,7 @@ import androidx.core.content.ContextCompat
 import org.sopt.seminar.presentation.home.PictureAdapter
 import androidx.activity.viewModels
 import org.sopt.seminar.databinding.ActivityWriteBinding
+import org.sopt.seminar.presentation.read.ReadActivity
 
 class WriteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWriteBinding
@@ -25,10 +28,12 @@ class WriteActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         checkComplete()
+        goReadActivity()
         initPictureAdapter()
         changePriceColor()
         backClickEvent()
     }
+
 
     private fun checkComplete() {
         viewModel.title.observe(this) {
@@ -78,6 +83,15 @@ class WriteActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {
             }
         })
+    }
+
+    private fun goReadActivity() {
+        if (binding.tvComplete.isClickable) {
+            binding.tvComplete.setOnClickListener {
+                val intent = Intent(this, ReadActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     private fun initPictureAdapter() {

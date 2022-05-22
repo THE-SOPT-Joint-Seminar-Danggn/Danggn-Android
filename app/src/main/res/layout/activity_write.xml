@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="14dp"
-            android:clickable="false"
+            android:clickable="true"
             android:fontFamily="@font/roboto"
             android:text="@string/write_complete"
             android:textColor="@color/squaregray"
