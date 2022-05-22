@@ -42,6 +42,9 @@ class WriteActivity : AppCompatActivity() {
         viewModel.category.observe(this) {
             viewModel.completeCheck()
         }
+        viewModel.price.observe(this) {
+            viewModel.completeCheck()
+        }
         viewModel.content.observe(this) {
             viewModel.completeCheck()
         }
