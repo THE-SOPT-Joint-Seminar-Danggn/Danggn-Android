@@ -1,8 +1,6 @@
-package org.sopt.seminar.presentation.read
+package org.sopt.seminar.presentation.read.screens
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.viewpager2.widget.ViewPager2

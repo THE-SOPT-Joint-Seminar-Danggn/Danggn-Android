@@ -1,12 +1,10 @@
-package org.sopt.seminar.presentation.read
+package org.sopt.seminar.presentation.read.screens
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.PagerAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import org.sopt.seminar.R
 import org.sopt.seminar.databinding.ReadViewpagerItemBinding
 
 class ReadImageViewPagerAdapter(private val imageUrlList: List<String>) :

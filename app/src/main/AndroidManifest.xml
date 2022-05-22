@@ -14,18 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DanggnAndroid">
         <activity
-            android:name=".presentation.write.WriteActivity"
-            android:exported="false">
-        </activity>
+            android:name=".presentation.write.screens.WriteActivity"
+            android:exported="false"/>
 
         <activity
-            android:name=".presentation.read.ReadActivity"
+            android:name=".presentation.read.screens.ReadActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.home.HomeActivity"
+            android:name=".presentation.home.screens.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
