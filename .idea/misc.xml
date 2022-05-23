@@ -3,6 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
+=======
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_alarm.xml" value="0.1955" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_back.xml" value="0.1955" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_camera.xml" value="0.1955" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_check.xml" value="0.126" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_img_close.xml" value="0.1965" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_mypage.xml" value="0.1965" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_no_check.xml" value="0.1585" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_range.xml" value="0.1965" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_share.xml" value="0.1965" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/shape_rectangle.xml" value="0.1945" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/font/roboto.xml" value="0.3963541666666667" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/layout/activity_home.xml" value="0.24427083333333333" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/layout/activity_main.xml" value="0.19972826086956522" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/layout/activity_write.xml" value="0.33" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/layout/fragment_home.xml" value="0.24427083333333333" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/layout/item_picture_list.xml" value="0.33" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/layout/item_product_list.xml" value="0.24427083333333333" />
+        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/layout/read_bottom_sheet.xml" value="0.19972826086956522" />
+>>>>>>> main
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/ic_alarm.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/ic_back.xml" value="0.1875" />
@@ -31,7 +52,11 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.15273742675781257" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24003623188405798" />
         <entry key="app/src/main/res/layout/activity_read.xml" value="0.25198516845703123" />
+<<<<<<< HEAD
         <entry key="app/src/main/res/layout/activity_write.xml" value="0.2669172932330827" />
+=======
+        <entry key="app/src/main/res/layout/activity_write.xml" value="0.49737211454898933" />
+>>>>>>> main
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.24416351318359372" />
         <entry key="app/src/main/res/layout/item_picture_list.xml" value="0.25769927536231885" />
         <entry key="app/src/main/res/layout/item_product_list.xml" value="0.2694787288057632" />
