@@ -19,7 +19,6 @@ import com.bumptech.glide.Glide
 import com.google.android.material.internal.ContextUtils.getActivity
 import org.sopt.seminar.databinding.ActivityWriteBinding
 import org.sopt.seminar.presentation.home.PictureAdapter
-import org.sopt.seminar.presentation.home.PictureData
 import org.sopt.seminar.util.BaseActivity
 import java.util.jar.Manifest
 
@@ -35,13 +34,13 @@ class WriteActivity : BaseActivity<ActivityWriteBinding>(R.layout.activity_write
 
 
         binding.layoutCamera.setOnClickListener {
+            Log.e("카메라 버튼 누름", "camera onClick")
             val intent = Intent()
             intent.type = "image/*"
             intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
             intent.action = Intent.ACTION_PICK
             requestActivity.launch(intent)
         }
-
 
 
     }
@@ -61,7 +60,10 @@ class WriteActivity : BaseActivity<ActivityWriteBinding>(R.layout.activity_write
                     clipData.let { clipData ->
                         for (i in 0 until clipDataSize!!) { //선택 한 사진수만큼 반복
                             val selectedImageUri = clipData.getItemAt(i).uri
-                            val bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
+                            val bitmap = MediaStore.Images.Media.getBitmap(
+                                getContentResolver(),
+                                selectedImageUri
+                            );
                             //pictureAdapter.pictureList.add(i, clipData.getItemAt(i).toString())
                             pictureAdapter.pictureList.add(i, bitmap.toString())
                             Log.e("selectedImageUri", "$selectedImageUri")
