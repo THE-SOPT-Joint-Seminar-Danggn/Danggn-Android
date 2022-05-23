@@ -1,16 +1,27 @@
 package org.sopt.seminar.presentation.write.screens
 
+import android.app.AlertDialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
+import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 import org.sopt.seminar.R
 import org.sopt.seminar.databinding.ActivityWriteBinding
 import org.sopt.seminar.presentation.read.screens.ReadActivity
 import org.sopt.seminar.presentation.write.viewmodels.WriteViewModel
+import java.util.jar.Manifest
 
 class WriteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWriteBinding
@@ -26,10 +37,62 @@ class WriteActivity : AppCompatActivity() {
         binding.writeViewModel = viewModel
         binding.lifecycleOwner = this
 
+        initPictureAdapter()
+        val galleryLauncher: ActivityResultLauncher<Intent> =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+                if(it.resultCode == RESULT_OK && it.data != null) {
+                    viewModel.imageList.observe(this, Observer {
+                        pictureAdapter.submitList(it.toMutableList())
+                        Log.e("viewmodel observe1","오류...")
+                    })
+                }
+            }
+
+        val requestPermissionLauncher =
+            registerForActivityResult(ActivityResultContracts.RequestPermission()){
+            isGranted : Boolean ->
+            if(isGranted){
+                val intent = Intent(Intent.ACTION_PICK)
+                intent.type = MediaStore.Images.Media.CONTENT_TYPE
+                galleryLauncher.launch(intent)
+            }
+        }
+
+        binding.layoutCamera.setOnClickListener {
+            when {
+                ContextCompat.checkSelfPermission(
+                    this, android.Manifest.permission.READ_EXTERNAL_STORAGE
+                ) == PackageManager.PERMISSION_GRANTED -> {
+                    val intent = Intent(Intent.ACTION_PICK)
+                    intent.type = MediaStore.Images.Media.CONTENT_TYPE
+                    galleryLauncher.launch(intent)
+                }
+                shouldShowRequestPermissionRationale(android.Manifest.permission.READ_EXTERNAL_STORAGE) -> {
+                    AlertDialog.Builder(this)
+                        .setTitle("권한 동의 필요")
+                        .setMessage("프로필 사진 수정을 위해 갤러리 접근 권한이 필요합니다.")
+                        .setPositiveButton("동의") { _, _ ->
+                            requestPermissionLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                        }
+                        .setNegativeButton("거부") { _, _ ->
+                        }
+                        .create()
+                        .show()
+                }
+                else -> {
+                    requestPermissionLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                }
+            }
+        }
+
+
         checkComplete()
         checkButtonComplete()
         goReadActivity()
-        initPictureAdapter()
+        viewModel.imageList.observe(this, Observer {
+            pictureAdapter.submitList(it.toMutableList())
+            Log.e("viewmodel observe2","오류...")
+        })
         changePriceColor()
         backClickEvent()
     }
@@ -128,19 +191,8 @@ class WriteActivity : AppCompatActivity() {
     }
 
     private fun initPictureAdapter() {
-        val img =
-            "https://images.velog.io/images/jojo_devstory/post/dae32386-bffc-40c3-b866-5c1e64516902/Android%2010_0.jpg"
         pictureAdapter = PictureAdapter()
-        binding.rvPicture.adapter = pictureAdapter
-        pictureAdapter.pictureList.addAll(
-            listOf(
-                PictureData(img),
-                PictureData(img),
-                PictureData(img),
-                PictureData(img)
-            )
-        )
-        pictureAdapter.notifyDataSetChanged()
+
     }
 
     private fun backClickEvent() {
