@@ -75,6 +75,7 @@ class WriteActivity : AppCompatActivity() {
                 }
             } else {
                 binding.btnCheck.setImageResource(R.drawable.ic_no_check)
+                binding.btnCheck.isClickable = false
             }
         }
     }
