@@ -26,6 +26,7 @@ class WriteActivity : AppCompatActivity() {
         binding.writeViewModel = viewModel
         binding.lifecycleOwner = this
 
+
         checkComplete()
         checkButtonComplete()
         goReadActivity()
@@ -128,19 +129,19 @@ class WriteActivity : AppCompatActivity() {
     }
 
     private fun initPictureAdapter() {
-        val img =
+        val img1 =
             "https://images.velog.io/images/jojo_devstory/post/dae32386-bffc-40c3-b866-5c1e64516902/Android%2010_0.jpg"
+        val img2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzvg63gbw4hewhMLLTqQIYQgm6H0MZ-ERTGg&usqp=CAU"
+        val img3 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDjsWqLzZTl4yB01g4JEhRIKbkrBPPrrBaWg&usqp=CAU"
         pictureAdapter = PictureAdapter()
         binding.rvPicture.adapter = pictureAdapter
-        pictureAdapter.pictureList.addAll(
+        pictureAdapter.submitList(
             listOf(
-                PictureData(img),
-                PictureData(img),
-                PictureData(img),
-                PictureData(img)
+                PictureData(img1),
+                PictureData(img2),
+                PictureData(img3)
             )
         )
-        pictureAdapter.notifyDataSetChanged()
     }
 
     private fun backClickEvent() {
