@@ -3,7 +3,6 @@ package org.sopt.seminar.presentation.write.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import org.sopt.seminar.presentation.write.screens.PictureData
 
 class WriteViewModel : ViewModel() {
     var title = MutableLiveData<String>()
