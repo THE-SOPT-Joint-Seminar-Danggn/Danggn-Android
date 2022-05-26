@@ -3,60 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_alarm.xml" value="0.1955" />
-        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_back.xml" value="0.1955" />
-        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_camera.xml" value="0.1955" />
-        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_check.xml" value="0.126" />
-        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_img_close.xml" value="0.1965" />
-        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_mypage.xml" value="0.1965" />
-        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_no_check.xml" value="0.1585" />
-        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_range.xml" value="0.1965" />
-        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/ic_share.xml" value="0.1965" />
-        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/drawable/shape_rectangle.xml" value="0.1945" />
-        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/font/roboto.xml" value="0.3963541666666667" />
-        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/layout/activity_home.xml" value="0.24427083333333333" />
-        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/layout/activity_write.xml" value="0.33" />
-        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/layout/fragment_home.xml" value="0.24427083333333333" />
-        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/layout/item_picture_list.xml" value="0.33" />
-        <entry key="..\:/Users/yjin1/AndroidStudioProjects/Danggn-Android1/app/src/main/res/layout/item_product_list.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/ic_alarm.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/ic_back.xml" value="0.1875" />
-        <entry key="app/src/main/res/drawable/ic_ellipse_14.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_heart.xml" value="0.1105" />
-        <entry key="app/src/main/res/drawable/ic_heart_on.xml" value="0.1105" />
-        <entry key="app/src/main/res/drawable/ic_home_black.xml" value="0.1105" />
-        <entry key="app/src/main/res/drawable/ic_home_chat.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_mypage.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_myplace.xml" value="0.18" />
-        <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/ic_smile.xml" value="0.2205" />
         <entry key="app/src/main/res/drawable/ic_town.xml" value="0.1875" />
-        <entry key="app/src/main/res/drawable/oval_circlegray.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/oval_while.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/read_state_bottom_sheet.xml" value="0.1365" />
-        <entry key="app/src/main/res/drawable/rectangle_blue_3dp.xml" value="0.2205" />
-        <entry key="app/src/main/res/drawable/rectangle_circlegray_4dp.xml" value="0.2205" />
-        <entry key="app/src/main/res/drawable/rectangle_linegray_1dp.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/rectangle_orange2_radius4dp.xml" value="0.2740234375000001" />
-        <entry key="app/src/main/res/drawable/rectangle_squaregray_3dp.xml" value="0.2205" />
-        <entry key="app/src/main/res/drawable/selector_read_heart.xml" value="0.1105" />
-        <entry key="app/src/main/res/drawable/selector_read_img_circle_indicator.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/shape_rectangle.xml" value="0.131" />
+        <entry key="app/src/main/res/drawable/shape_rectangle.xml" value="0.159" />
         <entry key="app/src/main/res/font/roboto.xml" value="0.3194871794871795" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.15273742675781257" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24003623188405798" />
-        <entry key="app/src/main/res/layout/activity_read.xml" value="0.25198516845703123" />
-        <entry key="app/src/main/res/layout/activity_write.xml" value="0.49737211454898933" />
-        <entry key="app/src/main/res/layout/activity_read.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_write.xml" value="0.1687116564417178" />
-        <entry key="app/src/main/res/layout/activity_read.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_write.xml" value="0.30183563232421873" />
+        <entry key="app/src/main/res/layout/activity_read.xml" value="0.22491349480968859" />
+        <entry key="app/src/main/res/layout/activity_write.xml" value="0.5131546020507813" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.24416351318359372" />
-        <entry key="app/src/main/res/layout/item_picture_list.xml" value="0.25769927536231885" />
-        <entry key="app/src/main/res/layout/item_product_list.xml" value="0.2694787288057632" />
-        <entry key="app/src/main/res/layout/read_bottom_sheet.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/read_viewpager_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_picture_list.xml" value="0.245018115942029" />
+        <entry key="app/src/main/res/layout/item_product_list.xml" value="0.22336769759450173" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.2942708333333333" />
       </map>
     </option>

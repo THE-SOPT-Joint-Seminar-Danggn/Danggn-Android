@@ -1,5 +1,7 @@
 package org.sopt.seminar.presentation.write.screens
 
+import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -8,7 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import org.sopt.seminar.databinding.ItemPictureListBinding
 
-class PictureAdapter : ListAdapter<PictureData, PictureAdapter.PictureViewHolder>(diffUtil) {
+class PictureAdapter: RecyclerView.Adapter<PictureAdapter.PictureViewHolder>(){
+    val imageList = mutableListOf<PictureData>()
+
+    override fun getItemCount(): Int= imageList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PictureViewHolder {
         val binding =
@@ -17,7 +22,7 @@ class PictureAdapter : ListAdapter<PictureData, PictureAdapter.PictureViewHolder
     }
 
     override fun onBindViewHolder(holder: PictureViewHolder, position: Int) {
-        holder.onBind(getItem(position))
+        holder.onBind(imageList[position])
     }
 
     class PictureViewHolder(
@@ -27,19 +32,6 @@ class PictureAdapter : ListAdapter<PictureData, PictureAdapter.PictureViewHolder
             Glide.with(binding.root)
                 .load(data.image)
                 .into(binding.ivPicture)
-        }
-    }
-
-    companion object {
-        val diffUtil = object : DiffUtil.ItemCallback<PictureData>() {
-            override fun areItemsTheSame(oldItem: PictureData, newItem: PictureData): Boolean {
-                return oldItem.image == newItem.image
-            }
-
-            override fun areContentsTheSame(oldItem: PictureData, newItem: PictureData): Boolean {
-                return oldItem == newItem
-            }
-
         }
     }
 }

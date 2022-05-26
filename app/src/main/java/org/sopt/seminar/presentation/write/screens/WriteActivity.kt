@@ -3,6 +3,7 @@ package org.sopt.seminar.presentation.write.screens
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.Editable
@@ -15,6 +16,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import org.sopt.seminar.R
@@ -28,7 +30,6 @@ class WriteActivity : AppCompatActivity() {
     private val viewModel by viewModels<WriteViewModel>()
     private lateinit var pictureAdapter: PictureAdapter
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWriteBinding.inflate(layoutInflater)
@@ -38,65 +39,56 @@ class WriteActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         initPictureAdapter()
+        binding.rvPicture.adapter = pictureAdapter
+
+
+
+        checkComplete()
+        checkButtonComplete()
+        changePriceColor()
+        backClickEvent()
+        cameraClickEvent()
+        goReadActivity()
+    }
+
+    private fun cameraClickEvent() {
         val galleryLauncher: ActivityResultLauncher<Intent> =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-                if(it.resultCode == RESULT_OK && it.data != null) {
-                    viewModel.imageList.observe(this, Observer {
-                        pictureAdapter.submitList(it.toMutableList())
-                        Log.e("viewmodel observe1","오류...")
-                    })
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                if (it.resultCode == RESULT_OK) {
+                    if (it.data?.data != null) {
+                        val clipData = it?.data?.clipData
+                        val clipDataSize = clipData!!.itemCount
+
+                        for (i in 0 until clipDataSize) {
+                            val imageUrl = clipData!!.getItemAt(i).uri
+                            pictureAdapter.imageList.add(PictureData(imageUrl.toString()))
+                        }
+                    } else { //이미지를 하나만 선택할 경우 clipData가 null이 올수 있음
+                        it?.data?.data?.let { uri ->
+                            val imageUrl: Uri? = it.data?.data
+                            if (imageUrl != null) {
+                                pictureAdapter.imageList.add(PictureData(imageUrl.toString()))
+                            }
+                        }
+
+                    }
                 }
+                pictureAdapter.notifyDataSetChanged()
             }
-
-        val requestPermissionLauncher =
-            registerForActivityResult(ActivityResultContracts.RequestPermission()){
-            isGranted : Boolean ->
-            if(isGranted){
-                val intent = Intent(Intent.ACTION_PICK)
-                intent.type = MediaStore.Images.Media.CONTENT_TYPE
-                galleryLauncher.launch(intent)
-            }
-        }
-
         binding.layoutCamera.setOnClickListener {
             when {
                 ContextCompat.checkSelfPermission(
                     this, android.Manifest.permission.READ_EXTERNAL_STORAGE
                 ) == PackageManager.PERMISSION_GRANTED -> {
                     val intent = Intent(Intent.ACTION_PICK)
-                    intent.type = MediaStore.Images.Media.CONTENT_TYPE
+                    intent.data = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
+                    intent.action = Intent.ACTION_GET_CONTENT
                     galleryLauncher.launch(intent)
-                }
-                shouldShowRequestPermissionRationale(android.Manifest.permission.READ_EXTERNAL_STORAGE) -> {
-                    AlertDialog.Builder(this)
-                        .setTitle("권한 동의 필요")
-                        .setMessage("프로필 사진 수정을 위해 갤러리 접근 권한이 필요합니다.")
-                        .setPositiveButton("동의") { _, _ ->
-                            requestPermissionLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
-                        }
-                        .setNegativeButton("거부") { _, _ ->
-                        }
-                        .create()
-                        .show()
-                }
-                else -> {
-                    requestPermissionLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
                 }
             }
         }
-
-
-        checkComplete()
-        checkButtonComplete()
-        goReadActivity()
-        viewModel.imageList.observe(this, Observer {
-            pictureAdapter.submitList(it.toMutableList())
-            Log.e("viewmodel observe2","오류...")
-        })
-        changePriceColor()
-        backClickEvent()
     }
-
 
     private fun checkComplete() {
         viewModel.title.observe(this) {
