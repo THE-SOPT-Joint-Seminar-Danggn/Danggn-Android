@@ -1,34 +1,22 @@
 package org.sopt.seminar.presentation.write.screens
 
-import android.app.AlertDialog
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
-import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
-import com.bumptech.glide.Glide
 import org.sopt.seminar.R
 import org.sopt.seminar.databinding.ActivityWriteBinding
 import org.sopt.seminar.presentation.read.screens.ReadActivity
 import org.sopt.seminar.presentation.write.viewmodels.WriteViewModel
-import java.util.jar.Manifest
 
 class WriteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWriteBinding
     private val viewModel by viewModels<WriteViewModel>()
     private lateinit var pictureAdapter: PictureAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,17 +29,18 @@ class WriteActivity : AppCompatActivity() {
         initPictureAdapter()
         binding.rvPicture.adapter = pictureAdapter
 
-
-
         checkComplete()
         checkButtonComplete()
+        goReadActivity()
+        initPictureAdapter()
         changePriceColor()
         backClickEvent()
-        cameraClickEvent()
+        //cameraClickEvent()
         goReadActivity()
     }
 
-    private fun cameraClickEvent() {
+/*
+* private fun cameraClickEvent() {
         val galleryLauncher: ActivityResultLauncher<Intent> =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
                 if (it.resultCode == RESULT_OK) {
@@ -88,7 +77,7 @@ class WriteActivity : AppCompatActivity() {
                 }
             }
         }
-    }
+    }*/
 
     private fun checkComplete() {
         viewModel.title.observe(this) {
@@ -129,6 +118,7 @@ class WriteActivity : AppCompatActivity() {
                 }
             } else {
                 binding.btnCheck.setImageResource(R.drawable.ic_no_check)
+                binding.btnCheck.isClickable = false
             }
         }
     }
@@ -183,8 +173,19 @@ class WriteActivity : AppCompatActivity() {
     }
 
     private fun initPictureAdapter() {
+        val img1 =
+            "https://images.velog.io/images/jojo_devstory/post/dae32386-bffc-40c3-b866-5c1e64516902/Android%2010_0.jpg"
+        val img2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzvg63gbw4hewhMLLTqQIYQgm6H0MZ-ERTGg&usqp=CAU"
+        val img3 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDjsWqLzZTl4yB01g4JEhRIKbkrBPPrrBaWg&usqp=CAU"
         pictureAdapter = PictureAdapter()
-
+        binding.rvPicture.adapter = pictureAdapter
+        pictureAdapter.submitList(
+            listOf(
+                PictureData(img1),
+                PictureData(img2),
+                PictureData(img3)
+            )
+        )
     }
 
     private fun backClickEvent() {

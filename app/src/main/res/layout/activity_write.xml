@@ -151,7 +151,6 @@
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            tools:itemCount="10"
                             tools:listitem="@layout/item_picture_list" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
