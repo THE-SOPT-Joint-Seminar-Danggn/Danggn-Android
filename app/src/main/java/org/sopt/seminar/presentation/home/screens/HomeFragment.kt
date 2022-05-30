@@ -7,8 +7,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import org.sopt.seminar.util.BaseFragment
 import org.sopt.seminar.R
-import org.sopt.seminar.ResponseFeed
-import org.sopt.seminar.ServiceCreator
+import org.sopt.seminar.data.api.ServiceCreator
 import org.sopt.seminar.databinding.FragmentHomeBinding
 import org.sopt.seminar.util.enqueueUtil
 

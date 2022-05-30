@@ -3,13 +3,11 @@ package org.sopt.seminar.presentation.home.screens
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.net.toUri
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import org.sopt.seminar.R
-import org.sopt.seminar.ResponseFeed
+import org.sopt.seminar.data.model.response.ResponseFeed
 import org.sopt.seminar.databinding.ItemProductListBinding
 
 class ProductAdapter : ListAdapter<ResponseFeed.Data, ProductAdapter.ProductViewHolder>(DIFFUTIL) {

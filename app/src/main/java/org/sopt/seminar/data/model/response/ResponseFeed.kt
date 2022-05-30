@@ -1,4 +1,4 @@
-package org.sopt.seminar
+package org.sopt.seminar.data.model.response
 
 data class ResponseFeed(
     val status: Int,

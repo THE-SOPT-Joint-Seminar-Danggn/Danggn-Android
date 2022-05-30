@@ -1,4 +1,4 @@
-package org.sopt.seminar
+package org.sopt.seminar.data.api
 
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
