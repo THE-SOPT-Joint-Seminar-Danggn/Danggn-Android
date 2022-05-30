@@ -6,9 +6,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import org.sopt.seminar.data.model.response.ResponseFeed
 import org.sopt.seminar.databinding.ItemProductListBinding
 
-class ProductAdapter : ListAdapter<ProductData, ProductAdapter.ProductViewHolder>(DIFFUTIL) {
+class ProductAdapter : ListAdapter<ResponseFeed.Data, ProductAdapter.ProductViewHolder>(DIFFUTIL) {
 
     private lateinit var itemClickListener: OnItemClickListener
 
@@ -20,29 +22,33 @@ class ProductAdapter : ListAdapter<ProductData, ProductAdapter.ProductViewHolder
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        holder.onBind(getItem(position))
+        holder.onBind(currentList[position])
     }
 
     class ProductViewHolder(
         private val binding: ItemProductListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(productData: ProductData) {
-            binding.product = productData
+        fun onBind(responseFeed: ResponseFeed.Data) {
+            binding.product = responseFeed
+            binding.tvTitle.text=responseFeed.title
+            binding.tvLocation
+            Glide.with(binding.root)
+                .load(responseFeed.image)
+                .into(binding.ivProduct)
         }
     }
 
     companion object {
-        val DIFFUTIL = object : DiffUtil.ItemCallback<ProductData>() {
+        val DIFFUTIL = object : DiffUtil.ItemCallback<ResponseFeed.Data>() {
             override fun areItemsTheSame(
-                oldItem: ProductData,
-                newItem: ProductData
+                oldItem: ResponseFeed.Data,
+                newItem: ResponseFeed.Data
             ): Boolean {
-                return oldItem.title == newItem.title
+                return oldItem.id == newItem.id
             }
-
             override fun areContentsTheSame(
-                oldItem: ProductData,
-                newItem: ProductData
+                oldItem: ResponseFeed.Data,
+                newItem: ResponseFeed.Data
             ): Boolean {
                 return oldItem == newItem
             }

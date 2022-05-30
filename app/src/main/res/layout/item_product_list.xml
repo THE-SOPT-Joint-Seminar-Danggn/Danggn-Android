@@ -6,7 +6,7 @@
     <data>
         <variable
             name="product"
-            type="org.sopt.seminar.presentation.home.screens.ProductData" />
+            type="org.sopt.seminar.data.model.response.ResponseFeed.Data" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:fontFamily="@font/roboto_regular"
-            android:text="@{product.location}"
+            android:text="@{product.region}"
             android:textColor="@color/darkgray"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@id/iv_product"
@@ -72,7 +72,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="6dp"
             android:fontFamily="@font/roboto_medium"
-            android:text="@{product.time}"
+            android:text="@{product.createdAt}"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@id/tv_dot"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
