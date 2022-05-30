@@ -30,9 +30,10 @@ class ProductAdapter : ListAdapter<ResponseFeed.Data, ProductAdapter.ProductView
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(responseFeed: ResponseFeed.Data) {
             binding.product = responseFeed
+            binding.tvTitle.text=responseFeed.title
+            binding.tvLocation
             Glide.with(binding.root)
                 .load(responseFeed.image)
-                .circleCrop()
                 .into(binding.ivProduct)
         }
     }
