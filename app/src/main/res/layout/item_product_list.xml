@@ -6,7 +6,7 @@
     <data>
         <variable
             name="product"
-            type="org.sopt.seminar.data.model.response.ResponseFeed" />
+            type="org.sopt.seminar.data.model.response.ResponseFeed.Data" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
