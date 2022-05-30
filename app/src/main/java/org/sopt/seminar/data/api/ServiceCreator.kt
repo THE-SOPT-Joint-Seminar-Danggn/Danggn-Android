@@ -36,4 +36,5 @@ object ServiceCreator {
         }
     }
     val feedService: FeedService = retrofit.create(FeedService::class.java)
+    val createService: CreateService = retrofit.create(CreateService::class.java)
 }
