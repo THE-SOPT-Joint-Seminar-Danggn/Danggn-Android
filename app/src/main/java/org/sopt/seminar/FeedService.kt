@@ -5,5 +5,5 @@ import retrofit2.http.GET
 
 interface FeedService {
     @GET("feed")
-    fun getFeedInfo(): Call<List<ResponseFeed>>
+    fun getFeedInfo(): Call<ResponseFeed>
 }
