@@ -4,13 +4,20 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import org.sopt.seminar.R
+import org.sopt.seminar.data.api.ServiceCreator
+import org.sopt.seminar.data.model.response.RequestCreate
+import org.sopt.seminar.data.model.response.ResponseCreate
 import org.sopt.seminar.databinding.ActivityWriteBinding
 import org.sopt.seminar.presentation.read.screens.ReadActivity
 import org.sopt.seminar.presentation.write.viewmodels.WriteViewModel
+import org.sopt.seminar.util.enqueueUtil
+import retrofit2.Call
 
 class WriteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWriteBinding
@@ -39,45 +46,48 @@ class WriteActivity : AppCompatActivity() {
         goReadActivity()
     }
 
-/*
-* private fun cameraClickEvent() {
-        val galleryLauncher: ActivityResultLauncher<Intent> =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                if (it.resultCode == RESULT_OK) {
-                    if (it.data?.data != null) {
-                        val clipData = it?.data?.clipData
-                        val clipDataSize = clipData!!.itemCount
-
-                        for (i in 0 until clipDataSize) {
-                            val imageUrl = clipData!!.getItemAt(i).uri
-                            pictureAdapter.imageList.add(PictureData(imageUrl.toString()))
-                        }
-                    } else { //이미지를 하나만 선택할 경우 clipData가 null이 올수 있음
-                        it?.data?.data?.let { uri ->
-                            val imageUrl: Uri? = it.data?.data
-                            if (imageUrl != null) {
-                                pictureAdapter.imageList.add(PictureData(imageUrl.toString()))
-                            }
-                        }
-
-                    }
-                }
-                pictureAdapter.notifyDataSetChanged()
-            }
-        binding.layoutCamera.setOnClickListener {
-            when {
-                ContextCompat.checkSelfPermission(
-                    this, android.Manifest.permission.READ_EXTERNAL_STORAGE
-                ) == PackageManager.PERMISSION_GRANTED -> {
-                    val intent = Intent(Intent.ACTION_PICK)
-                    intent.data = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-                    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
-                    intent.action = Intent.ACTION_GET_CONTENT
-                    galleryLauncher.launch(intent)
-                }
-            }
-        }
-    }*/
+//    private fun cameraClickEvent() {
+//        pictureAdapter = PictureAdapter()
+//        binding.rvPicture.adapter = pictureAdapter
+//        val galleryLauncher: ActivityResultLauncher<Intent> =
+//            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+//                if (it.resultCode == RESULT_OK) {
+//                    if (it.data?.data != null) {
+//                        Log.e("clip","clip2")
+//                        val clipData = it?.data?.clipData
+//                        val clipDataSize = clipData!!.itemCount
+//
+//                        for (i in 0 until clipDataSize) {
+//                            val imageUrl = clipData!!.getItemAt(i).uri
+//                            Log.e("clip","clip")
+//                            pictureAdapter.currentList.add(PictureData(imageUrl.toString()))
+//                        }
+//                    } else { //이미지를 하나만 선택할 경우 clipData가 null이 올수 있음
+//                        it?.data?.data?.let { uri ->
+//                            val imageUrl: Uri? = it.data?.data
+//                            if (imageUrl != null) {
+//                                pictureAdapter.currentList.add(PictureData(imageUrl.toString()))
+//                            }
+//                        }
+//
+//                    }
+//                }
+//                pictureAdapter.submitList(pictureAdapter.currentList)
+//            }
+//        binding.layoutCamera.setOnClickListener {
+//            when {
+//                ContextCompat.checkSelfPermission(
+//                    this, android.Manifest.permission.READ_EXTERNAL_STORAGE
+//                ) == PackageManager.PERMISSION_GRANTED -> {
+//                    val intent = Intent(Intent.ACTION_PICK)
+//                    intent.data = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+//                    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
+//                    intent.action = Intent.ACTION_GET_CONTENT
+//                    galleryLauncher.launch(intent)
+//                }
+//            }
+//        }
+//    }
 
     private fun checkComplete() {
         viewModel.title.observe(this) {
@@ -164,12 +174,34 @@ class WriteActivity : AppCompatActivity() {
     }
 
     private fun goReadActivity() {
-        if (binding.tvComplete.isClickable) {
-            binding.tvComplete.setOnClickListener {
-                val intent = Intent(this, ReadActivity::class.java)
-                startActivity(intent)
-            }
+
+        binding.tvComplete.setOnClickListener {
+            val requestCreate = RequestCreate(
+                imageCount = pictureAdapter.currentList.size,
+                title = binding.etTitle.text.toString(),
+                category = binding.etCategory.text.toString(),
+                price = binding.etPrice.text.toString().toInt(),
+                contents = binding.etWrite.text.toString(),
+                isPriceSuggestion = binding.btnCheck.isSelected
+            )
+
+            val call: Call<ResponseCreate> = ServiceCreator.createService.registerProduct(requestCreate)
+            call.enqueueUtil(
+                onSuccess = {
+
+                    val intent = Intent(this, ReadActivity::class.java)
+                    startActivity(intent)
+
+                },
+                onError = {
+                    when (it) {
+                        400 -> Toast.makeText(this, "요청값을 처리할 수 없습니다.", Toast.LENGTH_SHORT).show()
+                        500 -> Toast.makeText(this, "internal server error", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            )
         }
+
     }
 
     private fun initPictureAdapter() {
