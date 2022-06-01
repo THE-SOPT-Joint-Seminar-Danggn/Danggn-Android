@@ -109,7 +109,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto"
-                            android:text="@string/write_pic"
+                            android:text="0"
                             android:textColor="@color/carrot_black"
                             android:textFontWeight="500"
                             android:textSize="16sp"
