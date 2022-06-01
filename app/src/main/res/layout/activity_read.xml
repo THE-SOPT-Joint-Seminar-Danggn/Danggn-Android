@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="detailData"
+            type="org.sopt.seminar.data.model.response.ResponseDetail.Data" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -104,7 +106,7 @@
                     android:layout_marginStart="7dp"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="프로필 이름"
+                    android:text="@{detailData.user.name}"
                     android:textColor="@color/black_2"
                     android:textSize="14sp"
                     app:layout_constraintStart_toEndOf="@id/iv_profile"
@@ -116,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="청파동"
+                    android:text="@{detailData.user.area}"
                     android:textColor="@color/black_2"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="@id/tv_profile_name"
@@ -198,7 +200,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/cl_state"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="21dp"
@@ -248,7 +250,7 @@
                     android:layout_marginStart="14dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/roboto_semi_bold"
-                    android:text="최태성 한능검 심화 기출 500제"
+                    android:text="@{detailData.title}"
                     android:textColor="@color/black_2"
                     android:textSize="22sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -260,7 +262,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="도서/티켓/음반"
+                    android:text="@{detailData.category}"
                     android:textColor="@color/darkgray"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@id/tv_title"
@@ -276,11 +278,12 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_category" />
 
                 <TextView
+                    android:id="@+id/tv_createdAt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:text=" · 방금 전"
+                    android:text="@{detailData.createdAt}"
                     android:textColor="@color/darkgray"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/tv_category"
@@ -293,7 +296,7 @@
                     android:layout_marginHorizontal="15dp"
                     android:layout_marginTop="31dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="새책입니다"
+                    android:text="@{detailData.content}"
                     android:textColor="@color/black_2"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -305,7 +308,7 @@
                     android:layout_marginStart="14dp"
                     android:layout_marginTop="38dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="조회 1"
+                    android:text="@{`조회 ` + detailData.view}"
                     android:textColor="@color/darkgray"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -361,7 +364,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="16000원"
+                android:text="@{detailData.price}"
                 android:textColor="@color/black_2"
                 android:textSize="15sp"
                 app:layout_constraintStart_toEndOf="@id/iv_bottom_vertical_line"
@@ -372,7 +375,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/roboto_medium"
-                android:text="가격 제안 불가"
+                android:text="@{detailData.isPriceSuggestion}"
                 android:textColor="@color/darkgray"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@id/tv_cost"
