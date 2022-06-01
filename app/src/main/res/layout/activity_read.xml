@@ -207,7 +207,6 @@
                     android:layout_marginEnd="12dp"
                     android:background="@drawable/rectangle_squaregray_3dp"
                     android:paddingVertical="11dp"
-                    app:layout_constraintEnd_toEndOf="@id/tv_profile_area"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/iv_profile_line">
 
@@ -225,6 +224,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_semi_bold"
                             android:text="판매중"
+                            android:layout_marginStart="13dp"
                             android:textColor="@color/black_2"
                             android:textSize="16sp"
                             app:layout_constraintStart_toStartOf="parent"
@@ -236,6 +236,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="9dp"
                             android:src="@drawable/ic_arrow"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="13dp"
                             app:layout_constraintBottom_toBottomOf="@id/tv_state"
                             app:layout_constraintStart_toEndOf="@id/tv_state"
                             app:layout_constraintTop_toTopOf="@id/tv_state" />
