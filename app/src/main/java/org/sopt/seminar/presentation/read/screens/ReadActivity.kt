@@ -142,6 +142,7 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
                 binding.detailData = it.data
                 imageUrlList = it.data.image
                 imageViewPagerAdapter = ReadImageViewPagerAdapter(imageUrlList)
+                binding.ivHeart.isSelected = it.data.isLiked
 
                 Glide.with(this)
                     .load(it.data.user.profile)
