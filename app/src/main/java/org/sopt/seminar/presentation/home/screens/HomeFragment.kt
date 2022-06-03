@@ -23,6 +23,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         initAdapter()
         addRepoList()
     }
+
     private fun initAdapter() {
         val dividerItemDecoration =
             DividerItemDecoration(
@@ -34,10 +35,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             addItemDecoration(dividerItemDecoration)
         }
 
-        productAdapter = ProductAdapter{
+        productAdapter = ProductAdapter {
             val intent = Intent(activity, ReadActivity::class.java)
             intent.apply {
-                intent.putExtra("id",it.id)
+                intent.putExtra("id", it.id)
             }
             startActivity(intent)
         }
@@ -49,7 +50,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         val call = ServiceCreator.feedService.getFeedInfo()
         call.enqueueUtil(
             onSuccess = {
-                Log.e("success","서버성공이다")
+                Log.e("success", "서버성공이다")
                 productAdapter.submitList(it.data)
             }
         )
