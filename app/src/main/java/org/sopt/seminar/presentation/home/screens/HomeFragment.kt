@@ -15,7 +15,7 @@ import org.sopt.seminar.presentation.read.screens.ReadActivity
 import org.sopt.seminar.util.enqueueUtil
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
-    private var productAdapter = ProductAdapter()
+    private lateinit var productAdapter: ProductAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,6 +32,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         binding.rvProductList.apply {
             layoutManager = LinearLayoutManager(requireContext())
             addItemDecoration(dividerItemDecoration)
+        }
+
+        productAdapter = ProductAdapter{
+            val intent = Intent(activity, ReadActivity::class.java)
+            intent.apply {
+                intent.putExtra("id",it.id)
+            }
+            startActivity(intent)
         }
         binding.rvProductList.adapter = productAdapter
     }
