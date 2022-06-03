@@ -1,10 +1,12 @@
 package org.sopt.seminar.presentation.read.screens
 
 import android.os.Bundle
+import android.service.autofill.UserData
 import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayoutMediator
 import org.sopt.seminar.R
@@ -24,17 +26,21 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
 
     private lateinit var imageUrlList: List<String>
     private lateinit var imageViewPagerAdapter: ReadImageViewPagerAdapter
-
+    private lateinit var readId : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        initItemId()
         addReadList()
         setUpBottomSheet()
         setHeart()
 
     }
 
+    private fun initItemId(){
+        readId = intent.getStringExtra("id").toString()
+    }
     private fun setUpBottomSheet() {
         val stateBottomSheetView = layoutInflater.inflate(R.layout.read_bottom_sheet, null)
         val stateBottomSheetDialog =
@@ -84,7 +90,7 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
                 spinner.text = arr[i]
                 val requestDetailOnSail = RequestDetailOnSail(
                     //id = "4ioqqfnas328sd",
-                    id = "628f3accf23c6697485a79e4",
+                    id = readId,
                     onSale = i
                 )
                 val call: Call<ResponseDetailOnSale> =
@@ -107,7 +113,7 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
             if (!heart) {
                 heart = true
                 binding.ivHeart.isSelected = true
-                call.putReadLike("628f3accf23c6697485a79e4").enqueueUtil(
+                call.putReadLike(readId).enqueueUtil(
                     onSuccess = {
                         Log.e("like success", "서버성공이다")
                     }
@@ -115,7 +121,7 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
             } else {
                 heart = false
                 binding.ivHeart.isSelected = false
-                call.putReadLike("628f3accf23c6697485a79e4").enqueueUtil(
+                call.putReadLike(readId).enqueueUtil(
                     onSuccess = {
                         Log.e("like success", "서버성공이다")
                     }
@@ -128,9 +134,10 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
         Log.e("read list ", "함수 들어옴")
         val call = ServiceCreator.readService
 
-        call.getReadInfo("628f3accf23c6697485a79e4").enqueueUtil(
+        call.getReadInfo(readId).enqueueUtil(
             onSuccess = {
                 Log.e("read success", "서버성공이다")
+                Log.e("id",readId)
                 binding.detailData = it.data
                 imageUrlList = it.data.image
                 imageViewPagerAdapter = ReadImageViewPagerAdapter(imageUrlList)

@@ -208,8 +208,11 @@ class WriteActivity : AppCompatActivity() {
                 ServiceCreator.createService.registerProduct(requestCreate)
             call.enqueueUtil(
                 onSuccess = {
-                    val intent = Intent(this, ReadActivity::class.java)
+                    val intent = Intent(this, ReadActivity::class.java).apply{
+                        putExtra("id",it.data.id)
+                    }
                     startActivity(intent)
+                    finish()
                 },
                 onError = {
                     when (it) {
