@@ -1,7 +1,6 @@
 package org.sopt.seminar.presentation.read.screens
 
 import android.os.Bundle
-import android.service.autofill.UserData
 import android.util.Log
 import android.view.View
 import android.widget.TextView
@@ -12,7 +11,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 import org.sopt.seminar.R
 import org.sopt.seminar.data.api.ServiceCreator
 import org.sopt.seminar.data.model.request.RequestDetailOnSail
-import org.sopt.seminar.data.model.response.ResponseDetail
 import org.sopt.seminar.data.model.response.ResponseDetailOnSale
 import org.sopt.seminar.databinding.ActivityReadBinding
 import org.sopt.seminar.util.BaseActivity
@@ -26,7 +24,7 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
 
     private lateinit var imageUrlList: List<String>
     private lateinit var imageViewPagerAdapter: ReadImageViewPagerAdapter
-    private lateinit var readId : String
+    private lateinit var readId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +36,10 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
 
     }
 
-    private fun initItemId(){
+    private fun initItemId() {
         readId = intent.getStringExtra("id").toString()
     }
+
     private fun setUpBottomSheet() {
         val stateBottomSheetView = layoutInflater.inflate(R.layout.read_bottom_sheet, null)
         val stateBottomSheetDialog =
@@ -89,15 +88,17 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
             textView.setOnClickListener {
                 spinner.text = arr[i]
                 val requestDetailOnSail = RequestDetailOnSail(
-                    //id = "4ioqqfnas328sd",
                     id = readId,
-                    onSale = i
+                    onSale = i.toString()
                 )
                 val call: Call<ResponseDetailOnSale> =
                     ServiceCreator.readService.putReadOnSale(requestDetailOnSail)
                 call.enqueueUtil(
                     onSuccess = {
                         dialog.dismiss()
+                    },
+                    onError = {
+                        Log.e("putReadOnSale error", "상태 정보 변경 서버 오류")
                     }
                 )
             }
@@ -137,10 +138,16 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
         call.getReadInfo(readId).enqueueUtil(
             onSuccess = {
                 Log.e("read success", "서버성공이다")
-                Log.e("id",readId)
+                Log.e("id", readId)
                 binding.detailData = it.data
                 imageUrlList = it.data.image
                 imageViewPagerAdapter = ReadImageViewPagerAdapter(imageUrlList)
+
+                Glide.with(this)
+                    .load(it.data.user.profile)
+                    .error(resources.getDrawable(R.drawable.profile))
+                    .into(binding.ivProfile)
+
                 setUpViewPager()
             }
         )
