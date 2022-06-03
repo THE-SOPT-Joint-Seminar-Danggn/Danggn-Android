@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
 object ServiceCreator {
-    private const val BASE_URL = "https://83008f6f-c9e8-4bb3-a1f8-db102f7e9b13.mock.pstmn.io/"
+    private const val BASE_URL = "http://13.125.157.62:8000/"
 
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
