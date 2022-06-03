@@ -14,9 +14,9 @@ data class ResponseDetail(
         val createdAt: String,
         val image: List<String>,
         val isLiked: Boolean,
-        val isPriceSuggestion: String,
+        val isPriceSuggestion: Boolean,
         val onSale: Int,
-        val price: String,
+        val price: Int,
         val title: String,
         val view: Int,
         val user: User

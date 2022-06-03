@@ -366,18 +366,19 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="@{detailData.price}"
+                android:text=""
                 android:textColor="@color/black_2"
                 android:textSize="15sp"
                 app:layout_constraintStart_toEndOf="@id/iv_bottom_vertical_line"
                 app:layout_constraintTop_toTopOf="@id/iv_bottom_vertical_line" />
 
             <TextView
+                android:id="@+id/tv_price_suggestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/roboto_medium"
-                android:text="@{detailData.isPriceSuggestion}"
+                android:text="하하"
                 android:textColor="@color/darkgray"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@id/tv_cost"

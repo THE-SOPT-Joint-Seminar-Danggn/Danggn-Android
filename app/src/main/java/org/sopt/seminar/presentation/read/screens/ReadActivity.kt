@@ -16,6 +16,7 @@ import org.sopt.seminar.databinding.ActivityReadBinding
 import org.sopt.seminar.util.BaseActivity
 import org.sopt.seminar.util.enqueueUtil
 import retrofit2.Call
+import java.text.DecimalFormat
 
 class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
 
@@ -143,6 +144,16 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
                 imageUrlList = it.data.image
                 imageViewPagerAdapter = ReadImageViewPagerAdapter(imageUrlList)
                 binding.ivHeart.isSelected = it.data.isLiked
+
+                if(it.data.isPriceSuggestion) {
+                    binding.tvPriceSuggestion.text = "가격 제안 가능"
+                } else {
+                    binding.tvPriceSuggestion.text = "가격 제안 불하능"
+                }
+
+                val decimalFormat = DecimalFormat("#,###");
+                Log.e("decimal Format", "${decimalFormat.format(it.data.price)}")
+                binding.tvCost.text = decimalFormat.format(it.data.price)
 
                 Glide.with(this)
                     .load(it.data.user.profile)
