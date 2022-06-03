@@ -83,7 +83,8 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
             textView.setOnClickListener {
                 spinner.text = arr[i]
                 val requestDetailOnSail = RequestDetailOnSail(
-                    id = "4ioqqfnas328sd",
+                    //id = "4ioqqfnas328sd",
+                    id = "628f3accf23c6697485a79e4",
                     onSale = i
                 )
                 val call: Call<ResponseDetailOnSale> =
@@ -106,7 +107,7 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
             if (!heart) {
                 heart = true
                 binding.ivHeart.isSelected = true
-                call.putReadLike("4ioqqfnas328sd").enqueueUtil(
+                call.putReadLike("628f3accf23c6697485a79e4").enqueueUtil(
                     onSuccess = {
                         Log.e("like success", "서버성공이다")
                     }
@@ -114,7 +115,7 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
             } else {
                 heart = false
                 binding.ivHeart.isSelected = false
-                call.putReadLike("4ioqqfnas328sd").enqueueUtil(
+                call.putReadLike("628f3accf23c6697485a79e4").enqueueUtil(
                     onSuccess = {
                         Log.e("like success", "서버성공이다")
                     }
@@ -127,7 +128,7 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
         Log.e("read list ", "함수 들어옴")
         val call = ServiceCreator.readService
 
-        call.getReadInfo("4ioqqfnas328sd").enqueueUtil(
+        call.getReadInfo("628f3accf23c6697485a79e4").enqueueUtil(
             onSuccess = {
                 Log.e("read success", "서버성공이다")
                 binding.detailData = it.data

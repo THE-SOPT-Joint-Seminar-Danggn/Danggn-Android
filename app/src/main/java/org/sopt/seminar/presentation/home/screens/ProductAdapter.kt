@@ -11,7 +11,8 @@ import org.sopt.seminar.data.model.response.ResponseDetail
 import org.sopt.seminar.data.model.response.ResponseFeed
 import org.sopt.seminar.databinding.ItemProductListBinding
 
-class ProductAdapter : ListAdapter<ResponseFeed.Data, ProductAdapter.ProductViewHolder>(DIFFUTIL) {
+class ProductAdapter (private val itemClick: (ResponseFeed.Data) -> (Unit)) :
+    ListAdapter<ResponseFeed.Data, ProductAdapter.ProductViewHolder>(DIFFUTIL) {
 
 
     private lateinit var itemClickListener: OnItemClickListener
@@ -19,7 +20,7 @@ class ProductAdapter : ListAdapter<ResponseFeed.Data, ProductAdapter.ProductView
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val binding =
             ItemProductListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ProductViewHolder(binding)
+        return ProductViewHolder(binding,itemClick)
 
     }
 
@@ -28,15 +29,17 @@ class ProductAdapter : ListAdapter<ResponseFeed.Data, ProductAdapter.ProductView
     }
 
     inner class ProductViewHolder(
-        private val binding: ItemProductListBinding
+        private val binding: ItemProductListBinding,
+        private val itemClick: (ResponseFeed.Data) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(responseFeed: ResponseFeed.Data) {
             binding.product = responseFeed
-            binding.tvTitle.text = responseFeed.title
-            binding.tvLocation
             Glide.with(binding.root)
                 .load(responseFeed.image)
                 .into(binding.ivProduct)
+            binding.root.setOnClickListener {
+                itemClick(responseFeed)
+            }
         }
     }
 
