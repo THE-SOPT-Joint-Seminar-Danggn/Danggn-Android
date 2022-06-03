@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="product"
             type="org.sopt.seminar.data.model.response.ResponseFeed.Data" />
@@ -14,16 +15,23 @@
         android:layout_height="wrap_content"
         android:paddingVertical="20dp">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_items"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+
         <ImageView
             android:id="@+id/iv_product"
-            android:src="@{product.image}"
             android:layout_width="90dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            tools:src="@drawable/bookimage"
+            android:src="@{product.image}"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/bookimage" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -53,6 +61,7 @@
             app:layout_constraintStart_toStartOf="@id/tv_title"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
             tools:text="개봉동" />
+
         <TextView
             android:id="@+id/tv_dot"
             android:layout_width="wrap_content"
@@ -86,8 +95,10 @@
             android:text="@{String.valueOf(product.price) + '원'}"
             android:textColor="@color/carrot_black"
             android:textSize="17sp"
-            tools:text="3,000원"
             app:layout_constraintBottom_toBottomOf="@id/iv_product"
-            app:layout_constraintStart_toStartOf="@id/tv_title" />
+            app:layout_constraintStart_toStartOf="@id/tv_title"
+            tools:text="3,000원" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

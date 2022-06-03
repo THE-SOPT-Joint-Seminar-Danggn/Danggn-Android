@@ -5,6 +5,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import java.io.IOException
 
 object ServiceCreator {
@@ -37,4 +38,5 @@ object ServiceCreator {
     }
     val feedService: FeedService = retrofit.create(FeedService::class.java)
     val createService: CreateService = retrofit.create(CreateService::class.java)
+    val readService: ReadService = retrofit.create(ReadService::class.java)
 }

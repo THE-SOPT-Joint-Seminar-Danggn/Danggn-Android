@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import org.sopt.seminar.data.model.response.ResponseDetail
 import org.sopt.seminar.data.model.response.ResponseFeed
 import org.sopt.seminar.databinding.ItemProductListBinding
 
 class ProductAdapter : ListAdapter<ResponseFeed.Data, ProductAdapter.ProductViewHolder>(DIFFUTIL) {
+
 
     private lateinit var itemClickListener: OnItemClickListener
 
@@ -25,12 +27,12 @@ class ProductAdapter : ListAdapter<ResponseFeed.Data, ProductAdapter.ProductView
         holder.onBind(currentList[position])
     }
 
-    class ProductViewHolder(
+    inner class ProductViewHolder(
         private val binding: ItemProductListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(responseFeed: ResponseFeed.Data) {
             binding.product = responseFeed
-            binding.tvTitle.text=responseFeed.title
+            binding.tvTitle.text = responseFeed.title
             binding.tvLocation
             Glide.with(binding.root)
                 .load(responseFeed.image)
@@ -46,6 +48,7 @@ class ProductAdapter : ListAdapter<ResponseFeed.Data, ProductAdapter.ProductView
             ): Boolean {
                 return oldItem.id == newItem.id
             }
+
             override fun areContentsTheSame(
                 oldItem: ResponseFeed.Data,
                 newItem: ResponseFeed.Data
@@ -62,4 +65,5 @@ class ProductAdapter : ListAdapter<ResponseFeed.Data, ProductAdapter.ProductView
     fun setItemClickListener(itemClickListener: OnItemClickListener) {
         this.itemClickListener = itemClickListener
     }
+
 }

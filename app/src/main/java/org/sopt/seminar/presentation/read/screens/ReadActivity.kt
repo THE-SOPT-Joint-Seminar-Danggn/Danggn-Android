@@ -1,39 +1,44 @@
 package org.sopt.seminar.presentation.read.screens
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.tabs.TabLayoutMediator
 import org.sopt.seminar.R
+import org.sopt.seminar.data.api.ServiceCreator
+import org.sopt.seminar.data.model.request.RequestDetailOnSail
+import org.sopt.seminar.data.model.response.ResponseDetail
+import org.sopt.seminar.data.model.response.ResponseDetailOnSale
 import org.sopt.seminar.databinding.ActivityReadBinding
 import org.sopt.seminar.util.BaseActivity
+import org.sopt.seminar.util.enqueueUtil
+import retrofit2.Call
 
 class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
 
     private val arrTextViewId =
         arrayListOf(R.id.tv_title, R.id.tv_1, R.id.tv_2, R.id.tv_3, R.id.tv_4, R.id.tv_5, R.id.tv_6)
 
+    private lateinit var imageUrlList: List<String>
     private lateinit var imageViewPagerAdapter: ReadImageViewPagerAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        addReadList()
+        setUpBottomSheet()
+        setHeart()
 
-        val imageUrlList = listOf(
-            "https://cdn.newspenguin.com/news/photo/202006/1837_5156_215.jpg",
-            "https://cdnweb01.wikitree.co.kr/webdata/editor/202107/09/img_20210709133526_b7af1a66.webp"
-        )
-        imageViewPagerAdapter = ReadImageViewPagerAdapter(imageUrlList)
-        setUpViewPager()
+    }
 
-        TabLayoutMediator(binding.tlImages, binding.vpImages) { tab, position ->
-        }.attach()
-
+    private fun setUpBottomSheet() {
         val stateBottomSheetView = layoutInflater.inflate(R.layout.read_bottom_sheet, null)
         val stateBottomSheetDialog =
-            BottomSheetDialog(this, R.style.DialogCustomTheme) // dialog에 sytle 추가
+            BottomSheetDialog(this, R.style.DialogCustomTheme)
         val stateArray = resources.getStringArray(R.array.read_state_bottom_sheet_array)
 
         stateBottomSheetDialog.setContentView(stateBottomSheetView)
@@ -46,18 +51,11 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
         binding.clState.setOnClickListener {
             stateBottomSheetDialog.show()
         }
+    }
 
-        var heart = false
-        binding.ivHeart.setOnClickListener {
-            if (!heart) {
-                heart = true
-                binding.ivHeart.isSelected = true
-            } else {
-                heart = false
-                binding.ivHeart.isSelected = false
-            }
-
-        }
+    private fun setUpTabLayout() {
+        TabLayoutMediator(binding.tlImages, binding.vpImages) { tab, position ->
+        }.attach()
     }
 
     private fun setUpViewPager() {
@@ -68,6 +66,8 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
 
         val currentPageIndex = 1
         binding.vpImages.currentItem = currentPageIndex
+
+        setUpTabLayout()
     }
 
     private fun setBottomSheetView(
@@ -82,9 +82,59 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
             textView.visibility = View.VISIBLE
             textView.setOnClickListener {
                 spinner.text = arr[i]
-                dialog.dismiss()
+                val requestDetailOnSail = RequestDetailOnSail(
+                    id = "4ioqqfnas328sd",
+                    onSale = i
+                )
+                val call: Call<ResponseDetailOnSale> =
+                    ServiceCreator.readService.putReadOnSale(requestDetailOnSail)
+                call.enqueueUtil(
+                    onSuccess = {
+                        dialog.dismiss()
+                    }
+                )
             }
         }
     }
 
+    private fun setHeart() {
+        var heart = false
+
+        val call = ServiceCreator.readService
+
+        binding.ivHeart.setOnClickListener {
+            if (!heart) {
+                heart = true
+                binding.ivHeart.isSelected = true
+                call.putReadLike("4ioqqfnas328sd").enqueueUtil(
+                    onSuccess = {
+                        Log.e("like success", "서버성공이다")
+                    }
+                )
+            } else {
+                heart = false
+                binding.ivHeart.isSelected = false
+                call.putReadLike("4ioqqfnas328sd").enqueueUtil(
+                    onSuccess = {
+                        Log.e("like success", "서버성공이다")
+                    }
+                )
+            }
+        }
+    }
+
+    private fun addReadList() {
+        Log.e("read list ", "함수 들어옴")
+        val call = ServiceCreator.readService
+
+        call.getReadInfo("4ioqqfnas328sd").enqueueUtil(
+            onSuccess = {
+                Log.e("read success", "서버성공이다")
+                binding.detailData = it.data
+                imageUrlList = it.data.image
+                imageViewPagerAdapter = ReadImageViewPagerAdapter(imageUrlList)
+                setUpViewPager()
+            }
+        )
+    }
 }
