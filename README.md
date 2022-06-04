@@ -1,6 +1,10 @@
 # 👩🏻‍🌾 Danggn-Android
 
+### 최종 시연
 
+홈-상세보기|글쓰기|
+|:---:|:---:|
+<img src="https://user-images.githubusercontent.com/62291759/172009859-40e73427-5fe2-4db3-8828-643334570ab1.gif" width="250" height="500"/>|<img src="https://user-images.githubusercontent.com/62291759/171911607-81ea5524-0a5d-48b7-a3ac-a831f3110a20.gif" width="250" height="500"/>
 ## 🥕 Github Convention
 
 ### 📍issue 생성
